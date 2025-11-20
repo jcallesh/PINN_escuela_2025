@@ -327,7 +327,12 @@ Universidad de Valparaíso
 <p>Entre estas capas se insertan funciones de activación que introducen <em>no linealidad</em>, permitiendo que la red aprenda relaciones complejas entre entrada y salida.</p>
 </blockquote>
 <p>En términos generales, nuestro modelo puede entenderse como una función, <span class="math inline">\(\hat{y}\)</span>, parametrizada por los pesos(weights) y sesgos(biases) de la red <span class="math inline">\((w_{ij}, b_i)\)</span>, que agrupamos bajo el símbolo <span class="math inline">\(\theta\)</span>. Así, la red <span class="math inline">\(\hat{y}_\theta\)</span> representa una función que depende de estos parámetros, toma como entrada los valores <span class="math inline">\(x_i\)</span>, y produce como salida las predicciones correspondientes.</p>
-<p>Arquitectura propuesta * <strong>Capa 1:</strong> Lineal, transforma las entradas en una representación de dimensión intermedia. * <strong>Función de activación:</strong> puede ser <code>ReLU</code> (más simple y rápida) o <code>Tanh</code> (más suave y útil para funciones continuas). * <strong>Capa 2:</strong> Lineal, genera la salida final del modelo.</p>
+<p>Arquitectura propuesta</p>
+<ul>
+<li><strong>Capa 1:</strong> Lineal, transforma las entradas en una representación de dimensión intermedia.</li>
+<li><strong>Función de activación:</strong> puede ser <code>ReLU</code> (más simple y rápida) o <code>Tanh</code> (más suave y útil para funciones continuas).</li>
+<li><strong>Capa 2:</strong> Lineal, genera la salida final del modelo.</li>
+</ul>
 <p>Ayuda:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    nn.Linear(<span class="bu">input</span>,output)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    nn.Conv2d(<span class="bu">input</span>,output)</span>
@@ -441,8 +446,18 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 </div>
 <p>Ya tenemos nuestro modelo entrenado! Pero… <strong>¿realmente aprendió algo útil?</strong></p>
 <p>Para responderlo, haremos una inspección visual de las predicciones <span class="math inline">\(\hat{y}_i\)</span> generadas por la red.</p>
-<p>📈 Una visualización típica incluye: 1. <strong>Datos de entrenamiento:</strong> los puntos originales <span class="math inline">\((x_i, y_i)\)</span>, que representan nuestras observaciones. 2. <strong>Predicción del modelo:</strong> la función <span class="math inline">\(\hat{y}(x_{\text{new}})\)</span> evaluada en un conjunto de puntos nuevos y más densos, para ver la forma continua que aprendió. 3. <strong>Solución real (si la conocemos):</strong> <span class="math inline">\(y(x_{\text{new}})\)</span> evaluada en los mismos puntos del paso anterior, para comparar con la salida de la red.</p>
-<p>🔍 ¿Qué podemos observar de este gráfico? * Si el modelo captura correctamente la forma general de la función (por ejemplo, una senoide). * Si existen zonas sistemáticamente mal ajustadas, lo que indicaría un <em>sesgo estructural</em> o falta de capacidad del modelo. * Si la predicción es suavizada, ruidosa o errática, lo cual da pistas sobre el balance entre complejidad y regularización.</p>
+<p>📈 Una visualización típica incluye:</p>
+<ol type="1">
+<li><strong>Datos de entrenamiento:</strong> los puntos originales <span class="math inline">\((x_i, y_i)\)</span>, que representan nuestras observaciones.</li>
+<li><strong>Predicción del modelo:</strong> la función <span class="math inline">\(\hat{y}(x_{\text{new}})\)</span> evaluada en un conjunto de puntos nuevos y más densos, para ver la forma continua que aprendió.</li>
+<li><strong>Solución real (si la conocemos):</strong> <span class="math inline">\(y(x_{\text{new}})\)</span> evaluada en los mismos puntos del paso anterior, para comparar con la salida de la red.</li>
+</ol>
+<p>🔍 ¿Qué podemos observar de este gráfico?</p>
+<ul>
+<li>Si el modelo captura correctamente la forma general de la función (por ejemplo, una senoide).</li>
+<li>Si existen zonas sistemáticamente mal ajustadas, lo que indicaría un <em>sesgo estructural</em> o falta de capacidad del modelo.</li>
+<li>Si la predicción es suavizada, ruidosa o errática, lo cual da pistas sobre el balance entre complejidad y regularización.</li>
+</ul>
 <div id="6d5cf234" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>) <span class="co"># x_nuevos</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> evaluate(modelo, x_test) <span class="co"># Nuestro modelo evaluado en los nuevos puntos x</span></span>
