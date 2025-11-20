@@ -136,7 +136,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -175,35 +175,34 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introducción-y-referencias" id="toc-introducción-y-referencias" class="nav-link active" data-scroll-target="#introducción-y-referencias"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción y Referencias</span></a>
+  <li><a href="#requisitos-y-ejecución" id="toc-requisitos-y-ejecución" class="nav-link active" data-scroll-target="#requisitos-y-ejecución"><span class="header-section-number">1</span> Requisitos y ejecución</a>
   <ul class="collapse">
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.1</span> Referencias</a></li>
+  <li><a href="#punto-de-partida-necesitamos-datos" id="toc-punto-de-partida-necesitamos-datos" class="nav-link" data-scroll-target="#punto-de-partida-necesitamos-datos"><span class="header-section-number">1.1</span> 🔢 Punto de partida: ¡Necesitamos datos!</a></li>
+  <li><a href="#red-neuronal" id="toc-red-neuronal" class="nav-link" data-scroll-target="#red-neuronal"><span class="header-section-number">1.2</span> 🕸️ Red Neuronal</a></li>
+  <li><a href="#autograd" id="toc-autograd" class="nav-link" data-scroll-target="#autograd"><span class="header-section-number">1.3</span> ⚙️ <strong>Autograd</strong></a></li>
   </ul></li>
-  <li><a href="#requisitos-y-ejecución" id="toc-requisitos-y-ejecución" class="nav-link" data-scroll-target="#requisitos-y-ejecución"><span class="header-section-number">2</span> Requisitos y ejecución</a>
+  <li><a href="#ejemplo-guiado-ecuación-de-poisson-1d" id="toc-ejemplo-guiado-ecuación-de-poisson-1d" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-poisson-1d"><span class="header-section-number">2</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Poisson 1D</a>
   <ul class="collapse">
-  <li><a href="#punto-de-partida-necesitamos-datos" id="toc-punto-de-partida-necesitamos-datos" class="nav-link" data-scroll-target="#punto-de-partida-necesitamos-datos"><span class="header-section-number">2.1</span> 🔢 Punto de partida: ¡Necesitamos datos!</a></li>
-  <li><a href="#red-neuronal" id="toc-red-neuronal" class="nav-link" data-scroll-target="#red-neuronal"><span class="header-section-number">2.2</span> 🕸️ Red Neuronal</a></li>
-  <li><a href="#autograd" id="toc-autograd" class="nav-link" data-scroll-target="#autograd"><span class="header-section-number">2.3</span> ⚙️ <strong>Autograd</strong></a></li>
+  <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras"><span class="header-section-number">2.0.1</span> Extras:</a></li>
   </ul></li>
-  <li><a href="#ejemplo-guiado-ecuación-de-poisson-1d" id="toc-ejemplo-guiado-ecuación-de-poisson-1d" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-poisson-1d"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Poisson 1D</a>
+  <li><a href="#ejemplo-guiado-oscilador-armónico-en-1d" id="toc-ejemplo-guiado-oscilador-armónico-en-1d" class="nav-link" data-scroll-target="#ejemplo-guiado-oscilador-armónico-en-1d"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Oscilador armónico en 1D</a>
   <ul class="collapse">
-  <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras"><span class="header-section-number">3.0.1</span> Extras:</a></li>
+  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">3.0.1</span> Extra:</a></li>
   </ul></li>
-  <li><a href="#ejemplo-guiado-oscilador-armónico-en-1d" id="toc-ejemplo-guiado-oscilador-armónico-en-1d" class="nav-link" data-scroll-target="#ejemplo-guiado-oscilador-armónico-en-1d"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Oscilador armónico en 1D</a>
-  <ul class="collapse">
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">4.0.1</span> Extra:</a></li>
-  </ul></li>
-  <li><a href="#ejemplo-guiado-ecuación-de-helmholtz" id="toc-ejemplo-guiado-ecuación-de-helmholtz" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-helmholtz"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</a></li>
-  <li><a href="#case-of-study-poisson-en-2d" id="toc-case-of-study-poisson-en-2d" class="nav-link" data-scroll-target="#case-of-study-poisson-en-2d"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</a></li>
-  <li><a href="#case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" id="toc-case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="nav-link" data-scroll-target="#case-of-study-laplace-en-2d-con-una-singularidad-de-cuña"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</a></li>
+  <li><a href="#ejemplo-guiado-ecuación-de-helmholtz" id="toc-ejemplo-guiado-ecuación-de-helmholtz" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-helmholtz"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</a></li>
+  <li><a href="#case-of-study-poisson-en-2d" id="toc-case-of-study-poisson-en-2d" class="nav-link" data-scroll-target="#case-of-study-poisson-en-2d"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</a></li>
+  <li><a href="#case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" id="toc-case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="nav-link" data-scroll-target="#case-of-study-laplace-en-2d-con-una-singularidad-de-cuña"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 style="color:#F14925; font-size:2.5em; margin-bottom:0.3em;" class="title display-7">
@@ -231,33 +230,8 @@ Facultad de Ciencias y Edificio CIAE
 Universidad de Valparaíso
 </p>
 </div>
-<section id="introducción-y-referencias" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción y Referencias</span></h1>
-<section id="referencias" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="referencias"><span class="header-section-number">1.1</span> Referencias</h2>
-<ul>
-<li><p><a href="https://www.youtube.com/watch?v=JoFW2uSd3Uo&amp;list=PLMrJAkhIeNNQ0BaKuBKY43k4xMo6NSbBa">Physics Informed Machine Learning: High Level Overview of AI and ML in Science and Engineering - Steve Brunton</a></p></li>
-<li><p><a href="https://www.youtube.com/@CAMLabETHZurich/courses">CAMLab-youtube</a></p></li>
-<li><p><a href="https://github.com/mroberto166/CAMLab-DLSCTutorials">CAMLab-DLSCTutorials</a></p></li>
-<li><p><a href="https://arxiv.org/abs/2308.08468">AN EXPERT’S GUIDE TO TRAINING PHYSICS-INFORMED NEURAL NETWORKS</a></p></li>
-<li><p><a href="https://github.com/idrl-lab/PINNpapers?tab=readme-ov-file#pinnpapers">PINNpapers</a></p></li>
-</ul>
-<p>Ejemplos en Gravitactión y Cosmología:</p>
-<ul>
-<li><a href="https://arxiv.org/abs/2508.12032">Cosmology-informed Neural Networks to infer dark energy equation-of-state</a></li>
-<li><a href="https://arxiv.org/pdf/2507.11589">EINSTEIN FIELDS: A NEURAL PERSPECTIVE TO COMPUTATIONAL GENERAL RELATIVITY</a></li>
-<li><a href="https://arxiv.org/abs/2506.02957">Advancing Cosmological Simulations of Fuzzy Dark Matter with PINN</a></li>
-<li><a href="https://arxiv.org/abs/2502.13043">AInstein: Numerical Einstein Metrics via Machine Learning</a></li>
-<li><a href="https://arxiv.org/abs/2404.11583">Quasinormal Modes in Modified Gravity using PINN</a></li>
-<li><a href="https://arxiv.org/abs/2403.13899">PINNferring the Hubble Function with Uncertainties</a></li>
-<li><a href="https://arxiv.org/abs/2402.11343">Solving the Regge-Wheeler and Teukolsky equations: supervised versus unsupervised PINN</a></li>
-<li><a href="https://arxiv.org/abs/2305.08448">Gradient-Annihilated PINNs for Solving Riemann Problems: Application to Relativistic Hydrodynamics</a></li>
-<li><a href="https://arxiv.org/abs/2212.06103">Solving the Teukolsky equation with PINN</a></li>
-</ul>
-</section>
-</section>
-<section id="requisitos-y-ejecución" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Requisitos y ejecución</h1>
+<section id="requisitos-y-ejecución" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Requisitos y ejecución</h1>
 <p>En este curso utilizaremos <code>PyTorch</code> como la principal librería de Python para construir y entrenar redes neuronales. Asumiremos que ya tienes familiaridad con las siguientes herramientas:</p>
 <ul>
 <li>Github</li>
@@ -288,8 +262,8 @@ Universidad de Valparaíso
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> torch.cuda.is_available():</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    torch.set_default_device(<span class="st">"cuda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="punto-de-partida-necesitamos-datos" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="punto-de-partida-necesitamos-datos"><span class="header-section-number">2.1</span> 🔢 Punto de partida: ¡Necesitamos datos!</h2>
+<section id="punto-de-partida-necesitamos-datos" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="punto-de-partida-necesitamos-datos"><span class="header-section-number">1.1</span> 🔢 Punto de partida: ¡Necesitamos datos!</h2>
 <p>Para comenzar cualquier proceso de modelado o análisis, lo primero que necesitamos son datos.</p>
 <p>Típicamente, estos se presentan como:</p>
 <ul>
@@ -348,8 +322,8 @@ Universidad de Valparaíso
 </div>
 </div>
 </section>
-<section id="red-neuronal" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="red-neuronal"><span class="header-section-number">2.2</span> 🕸️ Red Neuronal</h2>
+<section id="red-neuronal" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="red-neuronal"><span class="header-section-number">1.2</span> 🕸️ Red Neuronal</h2>
 <p>Nuestro objetivo ahora es construir una red neuronal capaz de <strong>aprender</strong> a ajustar los datos sintéticos generados previamente. Para ello, implementaremos un Perceptrón Multicapa (MLP, <em>Multilayer Perceptron</em>), que es la forma más básica —y a la vez más versátil— de red neuronal.</p>
 <blockquote class="blockquote">
 <p>Un MLP está formado por varias capas lineales (<em>fully connected layers</em>), donde cada neurona se conecta con todas las de la capa anterior.</p>
@@ -523,8 +497,8 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 </div>
 <p>🔍 ¿Qué podemos observar de este gráfico? - Verificar si el modelo está convergiendo. - Detectar oscilaciones o problemas con la tasa de aprendizaje (learning rate, <span class="math inline">\(\eta\)</span>). - Identificar “overfitting” si la pérdida se estabiliza pero el modelo no mejora</p>
 </section>
-<section id="autograd" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="autograd"><span class="header-section-number">2.3</span> ⚙️ <strong>Autograd</strong></h2>
+<section id="autograd" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="autograd"><span class="header-section-number">1.3</span> ⚙️ <strong>Autograd</strong></h2>
 <p>Ahora que ya tenemos nuestro modelo entrenado, podemos hacer algo muy útil: calcular derivadas de la salida de la red con respecto a sus entradas.</p>
 <p>Esto es posible gracias a una herramienta fundamental en PyTorch llamada <code>autograd</code>. En otras palabras, podemos obtener: <span class="math display">\[\dfrac{d}{dx}\hat{y}(x)\]</span> de forma automática, sin necesidad de derivar la red “a mano”.</p>
 <div id="b4323102" class="cell" data-execution_count="11">
@@ -619,8 +593,8 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 </div>
 </section>
 </section>
-<section id="ejemplo-guiado-ecuación-de-poisson-1d" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Poisson 1D</h1>
+<section id="ejemplo-guiado-ecuación-de-poisson-1d" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Poisson 1D</h1>
 <p>Queremos resolver la ecuación de Poisson:</p>
 <p><span class="math display">\[-\frac{d^2 V}{dx^2} = \rho(x), \quad x \in [0, L] \;, \]</span> con las siguientes condiciones de borde:</p>
 <p><span class="math display">\[V(0) = V(L) = 0 \, .\]</span></p>
@@ -844,8 +818,8 @@ Epoch 10000/10000, Loss = 1.25e-02</code></pre>
 </div>
 </div>
 </div>
-<section id="extras" class="level3" data-number="3.0.1">
-<h3 data-number="3.0.1" class="anchored" data-anchor-id="extras"><span class="header-section-number">3.0.1</span> Extras:</h3>
+<section id="extras" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="extras"><span class="header-section-number">2.0.1</span> Extras:</h3>
 <p>Una partícula cargada localizada en x_0 se modela como una distribución delta de Dirac: <span class="math inline">\(\rho(x) = \delta_D(x - x_0)\)</span></p>
 <p>Para nuestro problema, esta se puede obtener como el límite de la fuente Gaussiana:</p>
 <p><span class="math display">\[\rho(x) = \exp\left[ -\frac{(x - x_0)^2}{2\sigma^2} \right] \quad \text{cuando } \sigma \to 0 \]</span></p>
@@ -855,8 +829,8 @@ Epoch 10000/10000, Loss = 1.25e-02</code></pre>
 </ul>
 </section>
 </section>
-<section id="ejemplo-guiado-oscilador-armónico-en-1d" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Oscilador armónico en 1D</h1>
+<section id="ejemplo-guiado-oscilador-armónico-en-1d" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Oscilador armónico en 1D</h1>
 <p>El oscilador armónico amortiguado en 1D:</p>
 <p><span class="math display">\[m \dfrac{d^2 x}{d t^2} + \mu \dfrac{d x}{d t} + kx = 0~, \]</span></p>
 <p>con condiciones iniciales: <span class="math display">\[x(0) = 1, \quad \dfrac{d x}{d t} = 0\]</span></p>
@@ -982,8 +956,8 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 </div>
 </div>
 <hr>
-<section id="extra" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="extra"><span class="header-section-number">4.0.1</span> Extra:</h3>
+<section id="extra" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="extra"><span class="header-section-number">3.0.1</span> Extra:</h3>
 <ul>
 <li>Intenta redefinir el MLP para que la salida del modelo tenga la siguiente forma:</li>
 </ul>
@@ -1000,8 +974,8 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 <p>¿Cómo ayuda esta reparametrización de la red? ¿Toma más o menos épocas en converger la solución? ¿Mejora el ajuste entre el valor analítico y la solución de nuestro modelo? ¿Vale la pena el trabajo extra?</p>
 </section>
 </section>
-<section id="ejemplo-guiado-ecuación-de-helmholtz" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</h1>
+<section id="ejemplo-guiado-ecuación-de-helmholtz" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</h1>
 <p>Modelamos una cavidad electromagnética unidimensional de longitud (L) con paredes perfectamente conductoras.</p>
 <p>Ecuación diferencial parcial (EDP):</p>
 <p><span class="math display">\[\frac{d^2 E(x)}{dx^2} + k^2 E(x) = 0, \quad x \in \Omega = [0, L]\]</span></p>
@@ -1141,8 +1115,8 @@ Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 </div>
 </div>
 </section>
-<section id="case-of-study-poisson-en-2d" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</h1>
+<section id="case-of-study-poisson-en-2d" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</h1>
 <p>En el siguiente problema consideramos un sistema con una fuente interna distribuida de forma sinusoidal en ambas direcciones espaciales, descrito por la siguiente ecuación de Poisson:</p>
 <p><span class="math display">\[-\Delta u(x) = 8 \pi^2 \sin(2\pi x) \sin(2\pi y)\]</span></p>
 <p>en el dominio cuadrado <span class="math inline">\(x \in \Omega = (-1,1)\times(-1,1)\)</span>.</p>
@@ -1153,8 +1127,8 @@ Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tu solución</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</h1>
+<section id="case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</h1>
 <p>Consideremos el siguiente problema de Dirichlet para la ecuación de Laplace en el dominio plano <span class="math inline">\(\Omega\)</span>,</p>
 <p><span class="math display">\[ \Delta u(x) = 0,  \in \Omega\]</span></p>
 <p>con condición de borde dada por:</p>
