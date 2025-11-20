@@ -193,7 +193,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#ejemplo-guiado-ecuación-de-helmholtz" id="toc-ejemplo-guiado-ecuación-de-helmholtz" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-helmholtz"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</a></li>
   <li><a href="#case-of-study-poisson-en-2d" id="toc-case-of-study-poisson-en-2d" class="nav-link" data-scroll-target="#case-of-study-poisson-en-2d"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</a></li>
-  <li><a href="#case-of-study-poisson-en-2d-con-una-singularidad-de-esquina" id="toc-case-of-study-poisson-en-2d-con-una-singularidad-de-esquina" class="nav-link" data-scroll-target="#case-of-study-poisson-en-2d-con-una-singularidad-de-esquina"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D con una singularidad de esquina</a></li>
+  <li><a href="#case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" id="toc-case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="nav-link" data-scroll-target="#case-of-study-laplace-en-2d-con-una-singularidad-de-cuña"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</a></li>
   </ul>
 </nav>
     </div>
@@ -1135,17 +1135,24 @@ Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 </section>
 <section id="case-of-study-poisson-en-2d" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</h1>
-<p>Resuelva el siguiente problema</p>
-<p><span class="math display">\[-\Delta u(x) = 8 \pi^2 \sin(2\pi x) \sin(2\pi y)\]</span> <span class="math display">\[x \in \Omega = (-1,1)\times(-1,1)\]</span> Cuya solución analítica es</p>
+<p>En el siguiente problema consideramos un sistema con una fuente interna distribuida de forma sinusoidal en ambas direcciones espaciales, descrito por la siguiente ecuación de Poisson:</p>
+<p><span class="math display">\[-\Delta u(x) = 8 \pi^2 \sin(2\pi x) \sin(2\pi y)\]</span></p>
+<p>en el dominio cuadrado <span class="math inline">\(x \in \Omega = (-1,1)\times(-1,1)\)</span>.</p>
+<p>Se imponen condiciones de borde de tipo Dirichlet, especificando que <span class="math display">\[ u(x) = 0, \in \partial\Omega .\]</span></p>
+<p>La solución analítica de este problema es:</p>
 <p><span class="math display">\[ u(x) = \sin(2\pi x) \sin(2\pi y). \]</span></p>
 </section>
-<section id="case-of-study-poisson-en-2d-con-una-singularidad-de-esquina" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D con una singularidad de esquina</h1>
-<p>Considere el siguiente problema</p>
-<p><span class="math display">\[ \Delta u(x) = 0,  \in \Omega\]</span> <span class="math display">\[ u(x) = u(r,\theta) = r^{1/2} \sin{\left( \frac{\theta}{2} \right)}, \in \partial\Omega \]</span></p>
-<p>donde $= (-1,1)(-1,1)[0,1) {0} $.</p>
-<p>Cuya solución analítica es</p>
+<section id="case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</h1>
+<p>Consideremos el siguiente problema de Dirichlet para la ecuación de Laplace en el dominio plano <span class="math inline">\(\Omega\)</span>,</p>
+<p><span class="math display">\[ \Delta u(x) = 0,  \in \Omega\]</span></p>
+<p>con condición de borde dada por:</p>
+<p><span class="math display">\[ u(x) = u(r,\theta) = r^{1/2} \sin{\left( \frac{\theta}{2} \right)}, \in \partial\Omega \]</span></p>
+<p>donde el dominio se define como $= (-1,1)(-1,1)[0,1) {0} $.</p>
+<p>Este dominio corresponde a un cuadrado con una hendidura (o corte) a lo largo del eje <span class="math inline">\(x\)</span> positivo, desde el origen hasta el punto <span class="math inline">\((1,0)\)</span>, lo que introduce una singularidad tipo cuña en el origen.</p>
+<p>La solución analítica de este problema es:</p>
 <p><span class="math display">\[ u(x) = r^{1/2} \sin{\left( \frac{\theta}{2} \right)}. \]</span></p>
+<p>donde <span class="math inline">\((r,\theta )\)</span> son las coordenadas polares centradas en el origen.</p>
 
 
 </section>
