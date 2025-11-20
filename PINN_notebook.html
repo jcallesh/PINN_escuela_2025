@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pinn_intro – PINNs - Escuela 2025</title>
+<title>pinn_notebook – PINNs - Escuela 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,8 +154,16 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./PINN_intro.html" aria-current="page"> 
-<span class="menu-text">PINN intro</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./intro.html"> 
+<span class="menu-text">PINN Intro</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./PINN_notebook.html" aria-current="page"> 
+<span class="menu-text">PINN notebook</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -334,7 +342,7 @@ Universidad de Valparaíso
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -481,7 +489,7 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -556,7 +564,7 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -604,7 +612,7 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -678,7 +686,7 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -831,7 +839,7 @@ Epoch 10000/10000, Loss = 1.25e-02</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -968,7 +976,7 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1127,7 +1135,7 @@ Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PINN_intro_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="PINN_notebook_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1141,6 +1149,9 @@ Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 <p>Se imponen condiciones de borde de tipo Dirichlet, especificando que <span class="math display">\[ u(x) = 0, \in \partial\Omega .\]</span></p>
 <p>La solución analítica de este problema es:</p>
 <p><span class="math display">\[ u(x) = \sin(2\pi x) \sin(2\pi y). \]</span></p>
+<div id="0c2a5d99" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tu solución</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="case-of-study-laplace-en-2d-con-una-singularidad-de-cuña" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Laplace en 2D con una singularidad de cuña</h1>
@@ -1153,6 +1164,9 @@ Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 <p>La solución analítica de este problema es:</p>
 <p><span class="math display">\[ u(x) = r^{1/2} \sin{\left( \frac{\theta}{2} \right)}. \]</span></p>
 <p>donde <span class="math inline">\((r,\theta )\)</span> son las coordenadas polares centradas en el origen.</p>
+<div id="af98347a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tu solución</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>
