@@ -267,7 +267,7 @@ Universidad de Valparaíso
 <li><strong>Entradas (inputs)</strong>: <span class="math inline">\(x_{1:N}=(x_1,x_2,...,x_N)\)</span> - donde cada <span class="math inline">\(x_i\)</span> representa una observación o conjunto de características.</li>
 <li><strong>Salidas (outputs)</strong>: <span class="math inline">\(y_{1:N}=(y_1,y_2,...,y_N)\)</span> - que corresponden a las respuestas, etiquetas o valores asociados a cada entrada.</li>
 </ul>
-<p>Este par (<span class="math inline">\(x_i\)</span>, <span class="math inline">\(y_i\)</span>) forma lo que llamamos una muestra (<em>sample</em>) de entrenamiento, y el conjunto completo de pares nos permite aprender patrones, ajustar modelos, o validar hipótesis que <strong>expliquen el proceso que generaron los outputs</strong>!.</p>
+<p>Este par <span class="math inline">\(\mathcal{D}= \{x_i,\, y_i\}_{i=1}^{N}\)</span> forma lo que llamamos una muestra (<em>sample</em>) de entrenamiento, y el conjunto completo de pares nos permite aprender patrones, ajustar modelos, o validar hipótesis que <strong>expliquen el proceso que generaron los outputs</strong>!.</p>
 <p>🎯 Objetivo: simular una señal tipo seno con ruido gaussiano</p>
 <p>Antes de aplicar cualquier modelo, vamos a generar nuestros propios datos. Estos datos serán <strong>sintéticos</strong>, es decir, <strong>creados artificialmente</strong> en lugar de recolectados del mundo real.</p>
 <p>¿Por qué usar datos sintéticos?</p>
@@ -372,7 +372,7 @@ Universidad de Valparaíso
 <li><p><span class="math inline">\(\nabla_\theta \mathcal{L}\)</span> es el gradiente de la pérdida respecto a los parámetros del modelo.</p>
 <ul>
 <li>Este gradiente indica la dirección de mayor aumento de la pérdida; por eso se resta en la actualización.</li>
-<li>En la práctica, los gradientes se calculan mediante <strong>diferenciación automática</strong> (<em>automatic differentiation</em>) en librerías como <em>PyTorch</em>, <em>TensorFlow</em>, <em>JAX</em> o <em>DiffEqFlux</em> (SciML).</li>
+<li>En la práctica, los gradientes se calculan mediante <strong>diferenciación automática</strong> (<em>automatic differentiation</em>) en librerías como <em>PyTorch</em>, <em>TensorFlow</em>, <em>JAX</em> o SciML.</li>
 </ul></li>
 </ul>
 <p>Existen distintos optimizadores que implementan variantes del descenso del gradiente:</p>
