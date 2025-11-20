@@ -90,12 +90,8 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Inicio</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./PINN_intro.html"> 
-<span class="menu-text">Notebook</span></a>
+<span class="menu-text">Inicio</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -220,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/jcallesh\.github\.io\/PINN_escuela_2025\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
