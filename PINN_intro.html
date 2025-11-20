@@ -155,7 +155,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./PINN_intro.html" aria-current="page"> 
-<span class="menu-text">Inicio</span></a>
+<span class="menu-text">PINN intro</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -177,21 +177,21 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.1</span> Referencias</a></li>
   </ul></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">2</span> Getting started</a>
+  <li><a href="#requisitos-y-ejecución" id="toc-requisitos-y-ejecución" class="nav-link" data-scroll-target="#requisitos-y-ejecución"><span class="header-section-number">2</span> 📘 Requisitos y ejecución</a>
   <ul class="collapse">
   <li><a href="#punto-de-partida-necesitamos-datos" id="toc-punto-de-partida-necesitamos-datos" class="nav-link" data-scroll-target="#punto-de-partida-necesitamos-datos"><span class="header-section-number">2.1</span> 🔢 Punto de partida: ¡Necesitamos datos!</a></li>
   <li><a href="#red-neuronal" id="toc-red-neuronal" class="nav-link" data-scroll-target="#red-neuronal"><span class="header-section-number">2.2</span> 🕸️ Red Neuronal</a></li>
   <li><a href="#autograd" id="toc-autograd" class="nav-link" data-scroll-target="#autograd"><span class="header-section-number">2.3</span> ⚙️ <strong>Autograd</strong></a></li>
   </ul></li>
-  <li><a href="#case-of-study-ecuación-de-poisson-1d" id="toc-case-of-study-ecuación-de-poisson-1d" class="nav-link" data-scroll-target="#case-of-study-ecuación-de-poisson-1d"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Case of Study:</span> Ecuación de Poisson 1D</a>
+  <li><a href="#ejemplo-guiado-ecuación-de-poisson-1d" id="toc-ejemplo-guiado-ecuación-de-poisson-1d" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-poisson-1d"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Poisson 1D</a>
   <ul class="collapse">
   <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras"><span class="header-section-number">3.0.1</span> Extras:</a></li>
   </ul></li>
-  <li><a href="#case-of-study-oscilador-armónico-en-1d" id="toc-case-of-study-oscilador-armónico-en-1d" class="nav-link" data-scroll-target="#case-of-study-oscilador-armónico-en-1d"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Case of study:</span> Oscilador armónico en 1D</a>
+  <li><a href="#ejemplo-guiado-oscilador-armónico-en-1d" id="toc-ejemplo-guiado-oscilador-armónico-en-1d" class="nav-link" data-scroll-target="#ejemplo-guiado-oscilador-armónico-en-1d"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Oscilador armónico en 1D</a>
   <ul class="collapse">
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">4.0.1</span> Extra:</a></li>
   </ul></li>
-  <li><a href="#case-of-study-ecuación-de-helmholtz" id="toc-case-of-study-ecuación-de-helmholtz" class="nav-link" data-scroll-target="#case-of-study-ecuación-de-helmholtz"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Case of Study:</span> Ecuación de Helmholtz</a></li>
+  <li><a href="#ejemplo-guiado-ecuación-de-helmholtz" id="toc-ejemplo-guiado-ecuación-de-helmholtz" class="nav-link" data-scroll-target="#ejemplo-guiado-ecuación-de-helmholtz"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</a></li>
   <li><a href="#case-of-study-poisson-en-2d" id="toc-case-of-study-poisson-en-2d" class="nav-link" data-scroll-target="#case-of-study-poisson-en-2d"><span class="header-section-number">6</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D</a></li>
   <li><a href="#case-of-study-poisson-en-2d-con-una-singularidad-de-esquina" id="toc-case-of-study-poisson-en-2d-con-una-singularidad-de-esquina" class="nav-link" data-scroll-target="#case-of-study-poisson-en-2d-con-una-singularidad-de-esquina"><span class="header-section-number">7</span> <span style="color:#1f77b4;">Case of study:</span> Poisson en 2D con una singularidad de esquina</a></li>
   </ul>
@@ -234,14 +234,42 @@ Universidad de Valparaíso
 <li><p><a href="https://arxiv.org/abs/2308.08468">AN EXPERT’S GUIDE TO TRAINING PHYSICS-INFORMED NEURAL NETWORKS</a></p></li>
 <li><p><a href="https://github.com/idrl-lab/PINNpapers?tab=readme-ov-file#pinnpapers">PINNpapers</a></p></li>
 </ul>
-<p>Ejemplos en Gravitactión y Cosmología: - <a href="https://arxiv.org/abs/2508.12032">Cosmology-informed Neural Networks to infer dark energy equation-of-state</a> - <a href="https://arxiv.org/pdf/2507.11589">EINSTEIN FIELDS: A NEURAL PERSPECTIVE TO COMPUTATIONAL GENERAL RELATIVITY</a> - <a href="https://arxiv.org/abs/2506.02957">Advancing Cosmological Simulations of Fuzzy Dark Matter with PINN</a> - <a href="https://arxiv.org/abs/2502.13043">AInstein: Numerical Einstein Metrics via Machine Learning</a> - <a href="https://arxiv.org/abs/2404.11583">Quasinormal Modes in Modified Gravity using PINN</a> - <a href="https://arxiv.org/abs/2403.13899">PINNferring the Hubble Function with Uncertainties</a> - <a href="https://arxiv.org/abs/2402.11343">Solving the Regge-Wheeler and Teukolsky equations: supervised versus unsupervised PINN</a> - <a href="https://arxiv.org/abs/2305.08448">Gradient-Annihilated PINNs for Solving Riemann Problems: Application to Relativistic Hydrodynamics</a> - <a href="https://arxiv.org/abs/2212.06103">Solving the Teukolsky equation with PINN</a></p>
+<p>Ejemplos en Gravitactión y Cosmología:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2508.12032">Cosmology-informed Neural Networks to infer dark energy equation-of-state</a></li>
+<li><a href="https://arxiv.org/pdf/2507.11589">EINSTEIN FIELDS: A NEURAL PERSPECTIVE TO COMPUTATIONAL GENERAL RELATIVITY</a></li>
+<li><a href="https://arxiv.org/abs/2506.02957">Advancing Cosmological Simulations of Fuzzy Dark Matter with PINN</a></li>
+<li><a href="https://arxiv.org/abs/2502.13043">AInstein: Numerical Einstein Metrics via Machine Learning</a></li>
+<li><a href="https://arxiv.org/abs/2404.11583">Quasinormal Modes in Modified Gravity using PINN</a></li>
+<li><a href="https://arxiv.org/abs/2403.13899">PINNferring the Hubble Function with Uncertainties</a></li>
+<li><a href="https://arxiv.org/abs/2402.11343">Solving the Regge-Wheeler and Teukolsky equations: supervised versus unsupervised PINN</a></li>
+<li><a href="https://arxiv.org/abs/2305.08448">Gradient-Annihilated PINNs for Solving Riemann Problems: Application to Relativistic Hydrodynamics</a></li>
+<li><a href="https://arxiv.org/abs/2212.06103">Solving the Teukolsky equation with PINN</a></li>
+</ul>
 </section>
 </section>
-<section id="getting-started" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Getting started</h1>
-<p>En este curso utilizaremos <code>PyTorch</code> como la principal librería de Python para construir y entrenar redes neuronales. Asumiremos que ya tienes familiaridad con las siguientes herramientas: - Github - Python - Jupyter notebooks - Numpy, Matplotlib, scipy - pytorch</p>
-<p>Existen, sin embargo, otras alternativas ampliamente utilizadas en investigación y la industria: 1. <a href="https://www.tensorflow.org/">TensorFlow/Keras</a> 1. <a href="https://docs.jax.dev/en/latest/notebooks/thinking_in_jax.html">JAX</a> 1. <a href="https://sciml.ai/">SciML/Julia</a></p>
-<p>Además de las herramientas mencionadas, este notebook asume que tienes nociones básicas de lo siguiente: - Neural network (NN) - Multilayer Perceptron (MLP) - Entrenamiento de una NN -&gt; Regresión/Clasificación</p>
+<section id="requisitos-y-ejecución" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 📘 Requisitos y ejecución</h1>
+<p>En este curso utilizaremos <code>PyTorch</code> como la principal librería de Python para construir y entrenar redes neuronales. Asumiremos que ya tienes familiaridad con las siguientes herramientas:</p>
+<ul>
+<li>Github</li>
+<li>Python</li>
+<li>Jupyter notebooks</li>
+<li>Numpy, Matplotlib, scipy</li>
+<li>pytorch</li>
+</ul>
+<p>Existen, sin embargo, otras alternativas ampliamente utilizadas en investigación y la industria:</p>
+<ol type="1">
+<li><a href="https://www.tensorflow.org/">TensorFlow/Keras</a></li>
+<li><a href="https://docs.jax.dev/en/latest/notebooks/thinking_in_jax.html">JAX</a></li>
+<li><a href="https://sciml.ai/">SciML/Julia</a></li>
+</ol>
+<p>Además de las herramientas mencionadas, este notebook asume que tienes nociones básicas de lo siguiente:</p>
+<ul>
+<li>Neural network (NN)</li>
+<li>Multilayer Perceptron (MLP)</li>
+<li>Entrenamiento de una NN -&gt; Regresión/Clasificación</li>
+</ul>
 <div id="99c1c3dc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
@@ -420,16 +448,16 @@ Universidad de Valparaíso
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoca<span class="op">+</span><span class="dv">1</span>) <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoca<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epocas<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch [100/1000], Loss: 0.0822
-Epoch [200/1000], Loss: 0.0609
-Epoch [300/1000], Loss: 0.0545
-Epoch [400/1000], Loss: 0.0507
-Epoch [500/1000], Loss: 0.0489
-Epoch [600/1000], Loss: 0.0215
-Epoch [700/1000], Loss: 0.0126
-Epoch [800/1000], Loss: 0.0112
-Epoch [900/1000], Loss: 0.0107
-Epoch [1000/1000], Loss: 0.0104</code></pre>
+<pre><code>Epoch [100/1000], Loss: 0.0941
+Epoch [200/1000], Loss: 0.0522
+Epoch [300/1000], Loss: 0.0293
+Epoch [400/1000], Loss: 0.0164
+Epoch [500/1000], Loss: 0.0117
+Epoch [600/1000], Loss: 0.0107
+Epoch [700/1000], Loss: 0.0105
+Epoch [800/1000], Loss: 0.0104
+Epoch [900/1000], Loss: 0.0104
+Epoch [1000/1000], Loss: 0.0103</code></pre>
 </div>
 </div>
 <p>Ya tenemos nuestro modelo entrenado! Pero… <strong>¿realmente aprendió algo útil?</strong></p>
@@ -583,8 +611,8 @@ Epoch [1000/1000], Loss: 0.0104</code></pre>
 </div>
 </section>
 </section>
-<section id="case-of-study-ecuación-de-poisson-1d" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Case of Study:</span> Ecuación de Poisson 1D</h1>
+<section id="ejemplo-guiado-ecuación-de-poisson-1d" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Poisson 1D</h1>
 <p>Queremos resolver la ecuación de Poisson:</p>
 <p><span class="math display">\[-\frac{d^2 V}{dx^2} = \rho(x), \quad x \in [0, L] \;, \]</span> con las siguientes condiciones de borde:</p>
 <p><span class="math display">\[V(0) = V(L) = 0 \, .\]</span></p>
@@ -754,7 +782,7 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test.view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).cpu().numpy()</span>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="20492b65" class="cell" data-execution_count="19">
+<div id="20492b65" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="op">=</span> MLP()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>criterio <span class="op">=</span> PoissonLoss(L<span class="op">=</span>L)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(modelo.parameters(), lr<span class="op">=</span><span class="fl">1e-3</span>)</span>
@@ -778,19 +806,19 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoca<span class="op">+</span><span class="dv">1</span>)<span class="op">%</span><span class="dv">1000</span><span class="op">==</span><span class="dv">0</span>:</span>
 <span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoca<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epocas<span class="sc">}</span><span class="ss">, Loss = </span><span class="sc">{</span>loss<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 1000/10000, Loss = 2.35e-01
-Epoch 2000/10000, Loss = 2.16e-01
-Epoch 3000/10000, Loss = 1.90e-01
-Epoch 4000/10000, Loss = 1.63e-01
-Epoch 5000/10000, Loss = 9.70e-02
-Epoch 6000/10000, Loss = 4.91e-02
-Epoch 7000/10000, Loss = 3.96e-02
-Epoch 8000/10000, Loss = 2.47e-02
-Epoch 9000/10000, Loss = 9.89e-03
-Epoch 10000/10000, Loss = 4.78e-03</code></pre>
+<pre><code>Epoch 1000/10000, Loss = 1.47e-01
+Epoch 2000/10000, Loss = 1.37e-01
+Epoch 3000/10000, Loss = 1.22e-01
+Epoch 4000/10000, Loss = 1.06e-01
+Epoch 5000/10000, Loss = 8.13e-02
+Epoch 6000/10000, Loss = 4.52e-02
+Epoch 7000/10000, Loss = 3.49e-02
+Epoch 8000/10000, Loss = 3.10e-02
+Epoch 9000/10000, Loss = 2.25e-02
+Epoch 10000/10000, Loss = 1.25e-02</code></pre>
 </div>
 </div>
-<div id="4faf8466" class="cell" data-execution_count="20">
+<div id="4faf8466" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.tensor(xs, dtype<span class="op">=</span>torch.float32).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>V_pred <span class="op">=</span> evaluate(modelo, x_test)</span>
@@ -819,8 +847,8 @@ Epoch 10000/10000, Loss = 4.78e-03</code></pre>
 </ul>
 </section>
 </section>
-<section id="case-of-study-oscilador-armónico-en-1d" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Case of study:</span> Oscilador armónico en 1D</h1>
+<section id="ejemplo-guiado-oscilador-armónico-en-1d" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Oscilador armónico en 1D</h1>
 <p>El oscilador armónico amortiguado en 1D:</p>
 <p><span class="math display">\[m \dfrac{d^2 x}{d t^2} + \mu \dfrac{d x}{d t} + kx = 0~, \]</span></p>
 <p>con condiciones iniciales: <span class="math display">\[x(0) = 1, \quad \dfrac{d x}{d t} = 0\]</span></p>
@@ -906,16 +934,16 @@ x(t) = e^{-\delta t}(2 A \cos(\phi + \omega t)),\quad\mathrm{con}\quad \omega=\s
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoch<span class="op">+</span><span class="dv">1</span>) <span class="op">%</span> <span class="dv">1000</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: Loss = </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 1000: Loss = 9.04e+02
-Epoch 2000: Loss = 6.81e+02
-Epoch 3000: Loss = 4.81e+02
-Epoch 4000: Loss = 2.41e+02
-Epoch 5000: Loss = 1.29e+02
-Epoch 6000: Loss = 9.47e+01
-Epoch 7000: Loss = 5.47e+01
-Epoch 8000: Loss = 3.14e+01
-Epoch 9000: Loss = 2.38e+01
-Epoch 10000: Loss = 1.83e+01</code></pre>
+<pre><code>Epoch 1000: Loss = 9.65e+02
+Epoch 2000: Loss = 9.50e+02
+Epoch 3000: Loss = 6.89e+02
+Epoch 4000: Loss = 3.73e+02
+Epoch 5000: Loss = 2.41e+02
+Epoch 6000: Loss = 1.64e+02
+Epoch 7000: Loss = 1.25e+02
+Epoch 8000: Loss = 1.06e+02
+Epoch 9000: Loss = 7.06e+01
+Epoch 10000: Loss = 3.03e+01</code></pre>
 </div>
 </div>
 <div id="1c2cb6ad" class="cell" data-execution_count="24">
@@ -964,8 +992,8 @@ Epoch 10000: Loss = 1.83e+01</code></pre>
 <p>¿Cómo ayuda esta reparametrización de la red? ¿Toma más o menos épocas en converger la solución? ¿Mejora el ajuste entre el valor analítico y la solución de nuestro modelo? ¿Vale la pena el trabajo extra?</p>
 </section>
 </section>
-<section id="case-of-study-ecuación-de-helmholtz" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Case of Study:</span> Ecuación de Helmholtz</h1>
+<section id="ejemplo-guiado-ecuación-de-helmholtz" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <span style="color:#1f77b4;">Ejemplo guiado:</span> Ecuación de Helmholtz</h1>
 <p>Modelamos una cavidad electromagnética unidimensional de longitud (L) con paredes perfectamente conductoras.</p>
 <p>Ecuación diferencial parcial (EDP):</p>
 <p><span class="math display">\[\frac{d^2 E(x)}{dx^2} + k^2 E(x) = 0, \quad x \in \Omega = [0, L]\]</span></p>
@@ -1058,7 +1086,7 @@ Epoch 10000: Loss = 1.83e+01</code></pre>
 <span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test.view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).cpu().numpy()</span>
 <span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="828f8def" class="cell" data-execution_count="32">
+<div id="828f8def" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>box_size <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">1000</span></span>
@@ -1073,19 +1101,19 @@ Epoch 10000: Loss = 1.83e+01</code></pre>
 <span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoch<span class="op">+</span><span class="dv">1</span>) <span class="op">%</span> <span class="dv">1000</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">:.4e}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch [1000/10000], Loss: 4.1026e-01
-Epoch [2000/10000], Loss: 6.4919e-03
-Epoch [3000/10000], Loss: 1.1377e-03
-Epoch [4000/10000], Loss: 1.0379e-03
-Epoch [5000/10000], Loss: 1.0426e-03
-Epoch [6000/10000], Loss: 1.6908e-04
-Epoch [7000/10000], Loss: 2.4824e-03
-Epoch [8000/10000], Loss: 4.4539e-05
-Epoch [9000/10000], Loss: 1.0288e-03
-Epoch [10000/10000], Loss: 1.0586e-04</code></pre>
+<pre><code>Epoch [1000/10000], Loss: 9.7957e-01
+Epoch [2000/10000], Loss: 1.0372e-03
+Epoch [3000/10000], Loss: 7.4442e-04
+Epoch [4000/10000], Loss: 4.5278e-04
+Epoch [5000/10000], Loss: 2.9588e-04
+Epoch [6000/10000], Loss: 9.4307e-05
+Epoch [7000/10000], Loss: 1.4104e-04
+Epoch [8000/10000], Loss: 6.5982e-05
+Epoch [9000/10000], Loss: 1.8265e-04
+Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 </div>
 </div>
-<div id="8e16173a" class="cell" data-execution_count="33">
+<div id="8e16173a" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, box_size, <span class="dv">200</span>).view(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>E_pred <span class="op">=</span> evaluate(modelo, x_test)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>E_true <span class="op">=</span> np.sqrt(<span class="dv">2</span>)<span class="op">*</span>np.sin(np.pi<span class="op">*</span>x_test.cpu().numpy() <span class="op">/</span> box_size)</span>
