@@ -279,7 +279,7 @@ Universidad de Valparaíso
 <p>Vamos a generar <span class="math inline">\(N\)</span> puntos de entrada <span class="math inline">\(x_i\)</span> distribuidos uniformemente en un intervalo (por ejemplo, <span class="math inline">\([0, 2\pi]\)</span>), y para cada uno calcularemos una salida <span class="math inline">\(y_i\)</span> como:</p>
 <p><span class="math display">\[y_i = \sin(x_i) + \epsilon_i\]</span></p>
 <p>donde <span class="math inline">\(\epsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span> es ruido Gaussiano/Normal con media cero y varianza <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Esto nos da un conjunto de datos <span class="math inline">\((x_i, y_i)\)</span> que <strong>emula</strong> una señal periódica con perturbaciones aleatorias - un escenario común en física, astronomía, y procesamiento de señales.</p>
+<p>Esto nos da un conjunto de datos <span class="math inline">\(\{x_i,\, y_i\}\)</span> que <strong>emula</strong> una señal periódica con perturbaciones aleatorias - un escenario común en física, astronomía, y procesamiento de señales.</p>
 <div id="c943e235" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Completar la siguiente función para que genere un conjunto de datos sintéticos que emule una distribución seno + ruido gaussiano</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generar_datos(num_puntos, desviacion_ruido<span class="op">=</span><span class="fl">0.1</span>):</span>
