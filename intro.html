@@ -206,7 +206,7 @@ Universidad de Valparaíso
 <h2 data-number="3.1" class="anchored" data-anchor-id="la-mecánica-de-las-pinns-cómo-funcionan"><span class="header-section-number">3.1</span> La Mecánica de las PINNs: Cómo Funcionan</h2>
 <p>Las PINNs se basan en una red neuronal profunda <span class="math inline">\(u_{\theta}(\mathbf{x}, t)\)</span> que aproxima la solución de un sistema físico descrito por una ecuación diferencial. La arquitectura de la red actúa directamente como la representación funcional del campo buscado: toma como entrada las coordenadas espaciales y temporales y produce como salida una estimación del valor de la solución en ese punto del dominio. De este modo, la red implementa de manera explícita un mapeo continuo desde el espacio de entrada hacia el espacio de soluciones.</p>
 <div style="text-align: center;">
-<p><img src="pinn.png" alt="Red Neuranal en una PINN" width="30%"></p>
+<p><img src="pinn.png" alt="Red Neuranal en una PINN" width="50%"></p>
 </div>
 <p>La diferencia central con los modelos de aprendizaje automático convencionales no radica en la arquitectura, sino en la definición de la función de costo. Mientras que en el aprendizaje supervisado estándar la pérdida se construye exclusivamente a partir del error entre predicciones y datos, en una PINN se incorporan también las ecuaciones gobernantes del sistema, así como las condiciones de contorno e iniciales. Esto permite imponer que la solución aprendida respete de manera aproximada la estructura diferencial del problema físico.</p>
 <p>Sin pérdida de generalidad, consideremos un sistema descrito por <span class="math display">\[ \mathcal{N}[u(\mathbf{x}, t)] = f(\mathbf{x}, t), \quad \mathbf{x} \in \Omega, ; t \in [0, T] \]</span></p>
@@ -234,7 +234,7 @@ Universidad de Valparaíso
 <h2 data-number="3.2" class="anchored" data-anchor-id="flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">3.2</span> Flujo de Entrenamiento de una PINN</h2>
 El proceso de entrenamiento de una PINN puede visualizarse mediante el diagrama (Imagen generada por <a href="https://deepmind.google/models/gemini-image/pro/">Nano Banana Pro</a>)
 <div style="text-align: center;">
-<p><img src="Gemini_Generated_Image_eipi2leipi2leipi.png" alt="PINNs esquema" width="70%"></p>
+<p><img src="Gemini_Generated_Image_eipi2leipi2leipi.png" alt="PINNs esquema" width="80%"></p>
 </div>
 <p>El proceso puede describirse en cinco pasos esenciales:</p>
 <ol type="1">
