@@ -56,13 +56,6 @@
     "text": "4.1 ¿Qué otras cosas podemos hacer?\n\nPINNs Bayesianas B-PINNs: Las B-PINNs tratan los pesos de la red neuronal como distribuciones de probabilidad en lugar de valores fijos. Esto permite que la red produzca tanto una predicción como una estimación de incertidumbre (intervalos de confianza), lo cual es crucial para la comparación experimental.\nPINNs Variacionales V-PINNs: En lugar de minimizar el residuo de la EDP (forma fuerte), las V-PINNs utilizan la forma débil de la EDP (similar al FEM), integrando las ecuaciones contra funciones de prueba. Esto las hace más robustas frente a datos ruidosos y más capaces de manejar soluciones de baja regularidad.\nSymbolic PINN PISN:"
   },
   {
-    "objectID": "intro.html#referencias",
-    "href": "intro.html#referencias",
-    "title": "\nPhysics-Informed Neural Networks (PINNs)\n",
-    "section": "4.2 Referencias",
-    "text": "4.2 Referencias\n\nPhysics Informed Deep Learning (Part I): Data-driven Solutions of Nonlinear Partial Differential Equations\nScientific Machine Learning through Physics-Informed Neural Networks: Where we are and What’s next\nAN EXPERT’S GUIDE TO TRAINING PHYSICS-INFORMED NEURAL NETWORKS\n\nAlgunos cursos online recomendados:\n\nPhysics Informed Machine Learning: High Level Overview of AI and ML in Science and Engineering - Steve Brunton\nCAMLab-youtube\n\nEn el area de Gravitactión y Cosmología:\n\nCosmology-informed Neural Networks to infer dark energy equation-of-state\nEINSTEIN FIELDS: A NEURAL PERSPECTIVE TO COMPUTATIONAL GENERAL RELATIVITY\nAdvancing Cosmological Simulations of Fuzzy Dark Matter with PINN\nAInstein: Numerical Einstein Metrics via Machine Learning\nQuasinormal Modes in Modified Gravity using PINN\nPINNferring the Hubble Function with Uncertainties\nSolving the Regge-Wheeler and Teukolsky equations: supervised versus unsupervised PINN\nGradient-Annihilated PINNs for Solving Riemann Problems: Application to Relativistic Hydrodynamics\nSolving the Teukolsky equation with PINN"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "PINNs - Escuela de Física Teórica de Valparaíso 2025",
