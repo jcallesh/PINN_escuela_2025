@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -117,9 +146,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción</span></a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción</span></a></li>
+  <li><a href="#the-old" id="toc-the-old" class="nav-link" data-scroll-target="#the-old"><span class="header-section-number">2</span> <span style="color:#1f77b4;">The old</span></a></li>
+  <li><a href="#the-good" id="toc-the-good" class="nav-link" data-scroll-target="#the-good"><span class="header-section-number">3</span> <span style="color:#1f77b4;">The good</span></a>
   <ul class="collapse">
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.1</span> Referencias</a></li>
+  <li><a href="#la-mecánica-de-las-pinns-cómo-funcionan" id="toc-la-mecánica-de-las-pinns-cómo-funcionan" class="nav-link" data-scroll-target="#la-mecánica-de-las-pinns-cómo-funcionan"><span class="header-section-number">3.1</span> La Mecánica de las PINNs: Cómo Funcionan</a></li>
+  <li><a href="#flujo-de-entrenamiento-de-una-pinn" id="toc-flujo-de-entrenamiento-de-una-pinn" class="nav-link" data-scroll-target="#flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">3.2</span> Flujo de Entrenamiento de una PINN</a></li>
+  </ul></li>
+  <li><a href="#the-bad" id="toc-the-bad" class="nav-link" data-scroll-target="#the-bad"><span class="header-section-number">4</span> <span style="color:#1f77b4;">The bad</span></a>
+  <ul class="collapse">
+  <li><a href="#qué-otras-cosas-podemos-hacer" id="toc-qué-otras-cosas-podemos-hacer" class="nav-link" data-scroll-target="#qué-otras-cosas-podemos-hacer"><span class="header-section-number">4.1</span> ¿Qué otras cosas podemos hacer?</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">4.2</span> Referencias</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -152,20 +189,89 @@ Universidad de Valparaíso
 </div>
 <section id="introducción" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción</span></h1>
-<p>El diagrama de una PINN (Fuente: <a href="https://en.wikipedia.org/wiki/Physics-informed_neural_networks">Wikipedia</a>)</p>
+<p>Las PINNs fueron introducidas en <a href="https://arxiv.org/abs/1711.10561">Physics Informed Deep Learning</a> como un método que integra datos observacionales y ecuaciones físicas dentro de un mismo modelo. A diferencia de los enfoques numéricos tradicionales, que dependen de discretizaciones específicas para aproximar derivadas, y de los modelos de aprendizaje automático estándar, que se ajustan únicamente a datos, las PINNs incorporan las ecuaciones que describen el sistema en la función de costo (Loss). Esto permite que la red aprenda soluciones que respetan, de forma aproximada, la estructura diferencial y los datos disponibles del problema. La combinación de información física y datos resulta especialmente útil cuando estos últimos son escasos, irregulares o difíciles de obtener mediante observación o simulación.</p>
+</section>
+<section id="the-old" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <span style="color:#1f77b4;">The old</span></h1>
+<p>La resolución de sistemas físicos descritos por ecuaciones diferenciales parciales, como las de Navier–Stokes, Maxwell, Schrödinger o Einstein, se ha basado históricamente en métodos numéricos como diferencias finitas, elementos finitos, volúmenes finitos y esquemas de integración temporal como Euler o Runge–Kutta. Estos enfoques han demostrado ser eficaces, pero dependen de la construcción de mallas espaciales o temporales cuya calidad condiciona la precisión y estabilidad de la solución. En geometrías complejas o dominios de alta dimensionalidad, generar y refinar estas mallas se vuelve costoso y puede limitar la capacidad del método para capturar estructuras relevantes del sistema.</p>
+<p>La escalabilidad también constituye un desafío. El aumento en el número de dimensiones o de variables implica un crecimiento significativo del costo computacional, lo que restringe la aplicabilidad de los métodos de malla en problemas donde se busca una resolución fina o una descripción multidimensional. A esto se suma la dificultad de los problemas inversos, en los cuales la estimación de parámetros internos o la recuperación de campos desconocidos requiere invertir operadores diferenciales que suelen ser mal condicionados. En estos casos, los métodos clásicos dependen de técnicas adicionales de regularización y de una cuidadosa selección de discretizaciones.</p>
+<p>Las PINNs ofrecen un enfoque alternativo al evitar la necesidad de discretizaciones rígidas. Al trabajar directamente con una representación continua de la solución, permiten evaluar el modelo en cualquier punto del dominio sin depender de una malla fija. Además, su capacidad para incorporar las ecuaciones gobernantes como parte del proceso de entrenamiento actúa como una forma de regularización física, lo que resulta útil cuando los datos observacionales son escasos o irregulares. En problemas inversos, los parámetros desconocidos pueden incluirse como variables entrenables, lo que permite estimarlos junto con el campo de solución sin modificar la formulación general del método.</p>
+<blockquote class="blockquote">
+<p>Es importante subrayar que las PINNs no reemplazan de manera universal a los métodos numéricos establecidos. Su rendimiento depende del tipo de ecuación, la dimensionalidad del problema y la estrategia de entrenamiento. En ciertos casos, los métodos tradicionales siguen siendo más eficientes o más estables, especialmente cuando se dispone de mallas bien construidas y datos suficientes.</p>
+</blockquote>
+</section>
+<section id="the-good" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">The good</span></h1>
+<section id="la-mecánica-de-las-pinns-cómo-funcionan" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="la-mecánica-de-las-pinns-cómo-funcionan"><span class="header-section-number">3.1</span> La Mecánica de las PINNs: Cómo Funcionan</h2>
+<p>Las PINNs se basan en una red neuronal profunda <span class="math inline">\(u_{\theta}(\mathbf{x}, t)\)</span> que aproxima la solución de un sistema físico descrito por una ecuación diferencial. La arquitectura de la red actúa directamente como la representación funcional del campo buscado: toma como entrada las coordenadas espaciales y temporales y produce como salida una estimación del valor de la solución en ese punto del dominio. De este modo, la red implementa de manera explícita un mapeo continuo desde el espacio de entrada hacia el espacio de soluciones.</p>
 <div style="text-align: center;">
-<p><img src="pinns_diagrama.png" alt="PINNs esquema" width="70%"></p>
+<p><img src="pinn.png" alt="Red Neuranal en una PINN" width="30%"></p>
 </div>
-<section id="referencias" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="referencias"><span class="header-section-number">1.1</span> Referencias</h2>
+<p>La diferencia central con los modelos de aprendizaje automático convencionales no radica en la arquitectura, sino en la definición de la función de costo. Mientras que en el aprendizaje supervisado estándar la pérdida se construye exclusivamente a partir del error entre predicciones y datos, en una PINN se incorporan también las ecuaciones gobernantes del sistema, así como las condiciones de contorno e iniciales. Esto permite imponer que la solución aprendida respete de manera aproximada la estructura diferencial del problema físico.</p>
+<p>Sin pérdida de generalidad, consideremos un sistema descrito por <span class="math display">\[ \mathcal{N}[u(\mathbf{x}, t)] = f(\mathbf{x}, t), \quad \mathbf{x} \in \Omega, ; t \in [0, T] \]</span></p>
+<p>definido en un dominio <span class="math inline">\(\Omega\)</span> y con condiciones de contorno e iniciales dadas por</p>
+<p><span class="math display">\[ \mathcal{B}[u(\mathbf{x}, t)] = g(\mathbf{x}, t), \quad \mathbf{x} \in \partial\Omega \]</span> <span class="math display">\[ u(\mathbf{x}, 0) = h(\mathbf{x}), \quad \mathbf{x} \in \Omega \]</span></p>
+<p>La innovación crucial consiste en definir una función de costo que combine distintos tipos de errores. El primero corresponde al ajuste a los datos observacionales:</p>
+<p><span class="math display">\[\mathcal{L}_{data} = \frac{1}{N} \sum_{i=1}^{N} |u_{\theta}(\mathbf{x}_i, t_i) - y_i|^2\]</span></p>
+<p>que cuantifica la concordancia entre las predicciones de la red y los datos disponibles.</p>
+<p>El segundo término evalúa el residuo de la ecuación diferencial. Definamos</p>
+<p><span class="math display">\[R_\theta \equiv \mathcal{N}[u(\mathbf{x}, t)] - f(\mathbf{x}, t)\]</span></p>
+<p>y construyamos la correspondiente función de costo como un error cuadrático medio:</p>
+<p><span class="math display">\[ \mathcal{L}_{PDE} = \frac{1}{M} \sum_{j=1}^{M} |R_\theta(x_i,t) |^2, \quad \mathbf{x} \in \Omega \]</span></p>
+<p>calculado en puntos seleccionados en el interior del dominio. Este procedimiento permite verificar el cumplimiento aproximado de la ecuación sin necesidad de discretizar derivadas.</p>
+<p>Los términos asociados a las condiciones de frontera y condiciones iniciales penalizan desviaciones respecto de los valores prescritos: <span class="math display">\[\mathcal{L}_{\rm{B.C.}} , \quad \mathbf{x} \in \partial\Omega,\]</span> <span class="math display">\[\mathcal{L}_{\rm{I.C.}}, \rm{at},\, t_0 \]</span></p>
+<p>La forma específica de estos términos depende de las condiciones particulares del problema.</p>
+<p>La función de costo total combina estos términos mediante pesos que regulan su contribución relativa:</p>
+<p><span class="math display">\[ \mathcal{L}_{total} = \rm{w}_d\mathcal{L}_{data} + \rm{w}_p\mathcal{L}_{PDE} + \rm{w}_b(\mathcal{L}_{\rm{B.C.}}+\mathcal{L}_{\rm{I.C.}})\]</span></p>
+<p>Donde los pesos <span class="math inline">\((\rm{w}_d, \rm{w}_p, \rm{w}_b)\)</span> son hiperparámetros definidos según las características del problema.</p>
+<p>El entrenamiento de la red consiste en minimizar esta función de costo mediante algoritmos estándar de retropropagación, como Adam o L-BFGS, ajustando los parámetros <span class="math inline">\(\theta\)</span> para obtener una solución coherente con los datos y con la física del sistema.</p>
+<blockquote class="blockquote">
+<p>Una ventaja técnica relevante proviene del uso de automatic differentiation, que permite evaluar derivadas de cualquier orden de <span class="math inline">\(u_\theta\)</span> de manera exacta dentro del grafo computacional. Esto evita introducir esquemas de discretización para las derivadas y facilita incorporar directamente los operadores diferenciales que definen el problema físico.</p>
+</blockquote>
+</section>
+<section id="flujo-de-entrenamiento-de-una-pinn" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">3.2</span> Flujo de Entrenamiento de una PINN</h2>
+El proceso de entrenamiento de una PINN puede visualizarse mediante el diagrama (Imagen generada por <a href="https://deepmind.google/models/gemini-image/pro/">Nano Banana Pro</a>)
+<div style="text-align: center;">
+<p><img src="Gemini_Generated_Image_eipi2leipi2leipi.png" alt="PINNs esquema" width="70%"></p>
+</div>
+<p>El proceso puede describirse en cinco pasos esenciales:</p>
+<ol type="1">
+<li><p>Definir el problema físico. Seleccionar la PDE y las condiciones iniciales/de contorno que se desean modelar.</p></li>
+<li><p>Identificar datos disponibles. Incorporar mediciones observacionales y cualquier información parcial del sistema.</p></li>
+<li><p>Diseñar la arquitectura. Elegir una red adecuada (MLP, ResNet, CNN, etc.).</p></li>
+<li><p><strong>Construir la función de pérdida</strong>. Combinar error de datos y residuo físico obtenido por diferenciación automática.</p></li>
+<li><p>Optimizar la red. Entrenar los parámetros mediante métodos como Adam o L-BFGS hasta obtener una solución que satisfaga simultáneamente datos y física.</p></li>
+</ol>
+</section>
+</section>
+<section id="the-bad" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:#1f77b4;">The bad</span></h1>
+<p>Las PINNs presentan varias limitaciones que aún restringen su desempeño frente a métodos numéricos tradicionales. En muchos problemas, su precisión es inferior a la alcanzada por esquemas de alto orden, lo que evidencia una brecha sistemática de exactitud. Además, su entrenamiento suele ser inestable debido al sesgo espectral, por el cual la red aprende con rapidez los modos de baja frecuencia pero converge con dificultad hacia componentes de alta frecuencia, comprometiendo la calidad de la solución.</p>
+<p>A diferencia de métodos como el FEM, las PINNs carecen de garantías teóricas de convergencia y de estimaciones rigurosas del error. Esto dificulta evaluar si la solución obtenida es físicamente consistente o si el entrenamiento quedó atrapado en un mínimo local. El costo computacional también es considerable: la evaluación de derivadas mediante automatic differentiation incrementa de forma significativa el tiempo de entrenamiento en comparación con una simulación numérica directa.</p>
+<p>Finalmente, las PINNs requieren conocer explícitamente las ecuaciones del sistema. En ausencia de un modelo físico bien establecido, su aplicación estándar resulta limitada, aunque existen extensiones híbridas orientadas al descubrimiento de ecuaciones a partir de datos.</p>
+<section id="qué-otras-cosas-podemos-hacer" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="qué-otras-cosas-podemos-hacer"><span class="header-section-number">4.1</span> ¿Qué otras cosas podemos hacer?</h2>
 <ul>
-<li><p><a href="https://www.youtube.com/watch?v=JoFW2uSd3Uo&amp;list=PLMrJAkhIeNNQ0BaKuBKY43k4xMo6NSbBa">Physics Informed Machine Learning: High Level Overview of AI and ML in Science and Engineering - Steve Brunton</a></p></li>
-<li><p><a href="https://www.youtube.com/@CAMLabETHZurich/courses">CAMLab-youtube</a></p></li>
-<li><p><a href="https://github.com/mroberto166/CAMLab-DLSCTutorials">CAMLab-DLSCTutorials</a></p></li>
-<li><p><a href="https://arxiv.org/abs/2308.08468">AN EXPERT’S GUIDE TO TRAINING PHYSICS-INFORMED NEURAL NETWORKS</a></p></li>
-<li><p><a href="https://github.com/idrl-lab/PINNpapers?tab=readme-ov-file#pinnpapers">PINNpapers</a></p></li>
+<li><p>PINNs Bayesianas <a href="https://arxiv.org/abs/2003.06097">B-PINNs</a>: Las B-PINNs tratan los pesos de la red neuronal como distribuciones de probabilidad en lugar de valores fijos. Esto permite que la red produzca tanto una predicción como una estimación de incertidumbre (intervalos de confianza), lo cual es crucial para la comparación experimental.</p></li>
+<li><p>PINNs Variacionales <a href="https://arxiv.org/abs/1912.00873">V-PINNs</a>: En lugar de minimizar el residuo de la EDP (forma fuerte), las V-PINNs utilizan la forma débil de la EDP (similar al FEM), integrando las ecuaciones contra funciones de prueba. Esto las hace más robustas frente a datos ruidosos y más capaces de manejar soluciones de baja regularidad.</p></li>
+<li><p>Symbolic PINN <a href="https://arxiv.org/abs/2207.06240">PISN</a>:</p></li>
 </ul>
-<p>Ejemplos en Gravitactión y Cosmología:</p>
+</section>
+<section id="referencias" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="referencias"><span class="header-section-number">4.2</span> Referencias</h2>
+<ul>
+<li><a href="https://arxiv.org/pdf/1711.10561">Physics Informed Deep Learning (Part I): Data-driven Solutions of Nonlinear Partial Differential Equations</a></li>
+<li><a href="https://arxiv.org/pdf/2201.05624">Scientific Machine Learning through Physics-Informed Neural Networks: Where we are and What’s next</a></li>
+<li><a href="https://arxiv.org/abs/2308.08468">AN EXPERT’S GUIDE TO TRAINING PHYSICS-INFORMED NEURAL NETWORKS</a></li>
+</ul>
+<p>Algunos cursos online recomendados:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=JoFW2uSd3Uo&amp;list=PLMrJAkhIeNNQ0BaKuBKY43k4xMo6NSbBa">Physics Informed Machine Learning: High Level Overview of AI and ML in Science and Engineering - Steve Brunton</a></li>
+<li><a href="https://www.youtube.com/@CAMLabETHZurich/courses">CAMLab-youtube</a></li>
+</ul>
+<p>En el area de Gravitactión y Cosmología:</p>
 <ul>
 <li><a href="https://arxiv.org/abs/2508.12032">Cosmology-informed Neural Networks to infer dark energy equation-of-state</a></li>
 <li><a href="https://arxiv.org/pdf/2507.11589">EINSTEIN FIELDS: A NEURAL PERSPECTIVE TO COMPUTATIONAL GENERAL RELATIVITY</a></li>
