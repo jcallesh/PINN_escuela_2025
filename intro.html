@@ -208,6 +208,9 @@ Universidad de Valparaíso
 <div style="text-align: center;">
 <p><img src="pinn.png" alt="Red Neuranal en una PINN" width="60%"></p>
 </div>
+<blockquote class="blockquote">
+<p>Una ventaja técnica relevante proviene del uso de automatic differentiation, que permite evaluar derivadas de cualquier orden de <span class="math inline">\(u_\theta\)</span> de manera exacta dentro del grafo computacional. La Figura ilustra un multi-layer perceptron, en línea discontinua, del cual podemos obtener gradientes ``gratis’’ durante el proceso de entrenamiento. Esto evita introducir esquemas de discretización para las derivadas y facilita incorporar directamente los operadores diferenciales que definen el problema físico.</p>
+</blockquote>
 <p>Lo que distingue a una PINN no es la arquitectura de la red, sino cómo se “entrena”. En el aprendizaje automático tradicional, la red intenta memorizar y generalizar datos, minimizando el error entre predicción y los dato reales. En una PINN, cambiamos las reglas: le exigimos que ajuste los datos, pero penalizamos cualquier solución que viole las leyes de la física. Básicamente, introducimos explicitamente la Ecuación Diferencial dentro de la función de costo. Esto obliga a la red a encontrar una solución que no solo pase por los datos, sino que obedezca la dinámica del sistema. Esta información “adicional” puede introducirse a manera de ligaduras, leyes de conservación o ecuaciones de movimiento, entre otras formulaciones equivalentes.</p>
 <p>Sin pérdida de generalidad, consideremos un sistema descrito por el operador diferenccial no-lineal <span class="math inline">\(\mathcal{N}\)</span> <span class="math display">\[ \mathcal{N}[u(\mathbf{x}, t)] = f(\mathbf{x}, t), \qquad \text{donde} \quad \mathbf{x} \in \Omega \;; \quad t \in [0, T] \,,\]</span></p>
 <p>definido en un dominio <span class="math inline">\(\Omega\)</span> y con condiciones de contorno e iniciales dadas por</p>
@@ -222,9 +225,6 @@ Universidad de Valparaíso
 <p><span class="math display">\[ \mathcal{L}_{total} = \rm{w}_d\mathcal{L}_{data} + \rm{w}_p\mathcal{L}_{PDE} + \rm{w}_b(\mathcal{L}_{\rm{B.C.}}+\mathcal{L}_{\rm{I.C.}})\,,\]</span></p>
 <p>siendo los pesos, <span class="math inline">\((\rm{w}_d, \rm{w}_p, \rm{w}_b)\)</span>, hiperparámetros definidos según las características del problema.</p>
 <p>El entrenamiento utiliza algoritmos de gradiente (Adam o L-BFGS) para encontrar los parámetros <span class="math inline">\(\theta\)</span> que minimicen <span class="math inline">\(\mathcal{L}_{total}\)</span>, equilibrando la fidelidad a los datos con la coherencia física del sistema.</p>
-<blockquote class="blockquote">
-<p>Una ventaja técnica relevante proviene del uso de automatic differentiation, que permite evaluar derivadas de cualquier orden de <span class="math inline">\(u_\theta\)</span> de manera exacta dentro del grafo computacional. La Figura~<span class="math inline">\(\ref{fig:pinn}\)</span> ilustra un multi-layer perceptron, en línea discontinua, del cual podemos obtener gradientes ``gratis’’ durante el proceso de entrenamiento. Esto evita introducir esquemas de discretización para las derivadas y facilita incorporar directamente los operadores diferenciales que definen el problema físico.</p>
-</blockquote>
 </section>
 <section id="flujo-de-entrenamiento-de-una-pinn" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">3.2</span> Flujo de Entrenamiento de una PINN</h2>
