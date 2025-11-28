@@ -81,28 +81,28 @@
     "href": "index.html",
     "title": "PINNs - Escuela de Física Teórica de Valparaíso 2025",
     "section": "",
-    "text": "Este sitio contiene el material de la clase sobre PINNs presentada en la Escuela de Física Teórica de Valparaíso 2025.\n\n\n\nIntroducción a PINNs\nColab\nHands-on session\n\n\n\n\nAplicar métodos numéricos modernos de aprendizaje automático para resolver problemas físicos modelados mediante ecuaciones diferenciales parciales (EDPs).\n\n\n\nPuedes navegar por las secciones desde la barra superior o usando los enlaces anteriores. Cada notebook está diseñado para ser autoexplicativo y ejecutable."
+    "text": "Juan Calles - juan.calles@uv.cl\n\n\nEscuela de Física Teórica de Valparaíso\n\n\n3 - 4 - 5 de Diciembre de 2025\n\n\nFacultad de Ciencias y Edificio CIAE\n\n\nUniversidad de Valparaíso"
   },
   {
     "objectID": "index.html#contenido",
     "href": "index.html#contenido",
     "title": "PINNs - Escuela de Física Teórica de Valparaíso 2025",
-    "section": "",
-    "text": "Introducción a PINNs\nColab\nHands-on session"
+    "section": "1.1 Contenido",
+    "text": "1.1 Contenido\n\nIntroducción a PINNs\nColab\nHands-on session"
   },
   {
     "objectID": "index.html#objetivo",
     "href": "index.html#objetivo",
     "title": "PINNs - Escuela de Física Teórica de Valparaíso 2025",
-    "section": "",
-    "text": "Aplicar métodos numéricos modernos de aprendizaje automático para resolver problemas físicos modelados mediante ecuaciones diferenciales parciales (EDPs)."
+    "section": "1.2 Objetivo",
+    "text": "1.2 Objetivo\nAplicar métodos numéricos modernos de aprendizaje automático para resolver problemas físicos modelados mediante ecuaciones diferenciales parciales (EDPs)."
   },
   {
     "objectID": "index.html#cómo-usar-este-sitio",
     "href": "index.html#cómo-usar-este-sitio",
     "title": "PINNs - Escuela de Física Teórica de Valparaíso 2025",
-    "section": "",
-    "text": "Puedes navegar por las secciones desde la barra superior o usando los enlaces anteriores. Cada notebook está diseñado para ser autoexplicativo y ejecutable."
+    "section": "1.3 Cómo usar este sitio",
+    "text": "1.3 Cómo usar este sitio\nPuedes navegar por las secciones desde la barra superior o usando los enlaces anteriores. Cada notebook está diseñado para ser autoexplicativo y ejecutable."
   },
   {
     "objectID": "PINN_escuela_2025.html",
