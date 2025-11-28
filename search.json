@@ -74,7 +74,7 @@
     "href": "colab.html#primeros-pasos-en-google-colab",
     "title": "\nPhysics-Informed Neural Networks (PINNs)\n",
     "section": "1.2 Primeros pasos en Google Colab",
-    "text": "1.2 Primeros pasos en Google Colab\nPuedes comenzar accediendo al enlace: https://colab.google/.\nAl hacerlo, verás una interfaz como la siguiente:\n\n\n\nHaz clic en “New notebook”:\n\n\n\nLuego, para revisar las características de la “máquina”, haz clic en el botón “Connect” o en el icono de CPU/RAM:\n\n\n\nPara cambiar de “máquina”, selecciona “Connect to a hosted runtime”:\n\n\n\nAquí podrás especificar el hardware de tu entorno. Por ejemplo, puedes elegir “T4 GPU”. Una vez activado, deberías ver este recurso disponible:"
+    "text": "1.2 Primeros pasos en Google Colab\nPuedes comenzar accediendo al enlace: https://colab.google/\nAl hacerlo, verás una interfaz como la siguiente:\n\n\n\nHaz clic en “New notebook”:\n\n\n\nLuego, para revisar las características de la “máquina”, haz clic en el botón “Connect” o en el icono de CPU/RAM:\n\n\n\nPara cambiar de “máquina”, selecciona “Connect to a hosted runtime”:\n\n\n\nAquí podrás especificar el hardware de tu entorno. Por ejemplo, puedes elegir “T4 GPU”. Una vez activado, deberías ver este recurso disponible:"
   },
   {
     "objectID": "index.html",
