@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PINNs - Escuela de Física Teórica de Valparaíso 2025 – PINNs - Escuela 2025</title>
+<title>colab – PINNs - Escuela 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -90,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
@@ -98,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">PINN Intro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./colab.html"> 
+    <a class="nav-link active" href="./colab.html" aria-current="page"> 
 <span class="menu-text">Colab</span></a>
   </li>  
   <li class="nav-item">
@@ -121,55 +156,82 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#physics-informed-neural-networks" id="toc-physics-informed-neural-networks" class="nav-link active" data-scroll-target="#physics-informed-neural-networks"><span class="header-section-number">1</span> Physics-Informed Neural Networks</a>
+  <li><a href="#google-colab" id="toc-google-colab" class="nav-link active" data-scroll-target="#google-colab"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Google Colab</span></a>
   <ul class="collapse">
-  <li><a href="#contenido" id="toc-contenido" class="nav-link" data-scroll-target="#contenido"><span class="header-section-number">1.1</span> Contenido</a></li>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo"><span class="header-section-number">1.2</span> Objetivo</a></li>
-  <li><a href="#cómo-usar-este-sitio" id="toc-cómo-usar-este-sitio" class="nav-link" data-scroll-target="#cómo-usar-este-sitio"><span class="header-section-number">1.3</span> Cómo usar este sitio</a></li>
+  <li><a href="#consideraciones-antes-de-empezar" id="toc-consideraciones-antes-de-empezar" class="nav-link" data-scroll-target="#consideraciones-antes-de-empezar"><span class="header-section-number">1.1</span> Consideraciones antes de empezar:</a></li>
+  <li><a href="#primeros-pasos-en-google-colab" id="toc-primeros-pasos-en-google-colab" class="nav-link" data-scroll-target="#primeros-pasos-en-google-colab"><span class="header-section-number">1.2</span> Primeros pasos en Google Colab</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 style="color:#F14925; font-size:2.5em; margin-bottom:0.3em;" class="title display-7">
+Physics-Informed Neural Networks (PINNs)
+</h1></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">PINNs - Escuela de Física Teórica de Valparaíso 2025</h1>
+
+
+
+<div style="text-align:center; font-family:sans-serif; line-height:1.6;">
+
+<p style="font-size:1.8em; margin:0.2em 0;">
+Juan Calles - <a href="mailto:juan.calles@uv.cl" style="color:inherit; text-decoration:none;">juan.calles@uv.cl</a>
+</p>
+<p style="font-size:1.5em; font-weight:bold; margin-top:1em;">
+Escuela de Física Teórica de Valparaíso
+</p>
+<p style="font-size:1.3em; margin:0.2em 0;">
+3 - 4 - 5 de Diciembre de 2025
+</p>
+<p style="font-size:1.3em; margin:0.2em 0;">
+Facultad de Ciencias y Edificio CIAE
+</p>
+<p style="font-size:1.3em; margin:0.2em 0;">
+Universidad de Valparaíso
+</p>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="physics-informed-neural-networks" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Physics-Informed Neural Networks</h1>
-<p>Este sitio contiene el material de la clase sobre PINNs presentada en la Escuela de Física Teórica de Valparaíso 2025.</p>
-<section id="contenido" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="contenido"><span class="header-section-number">1.1</span> Contenido</h2>
+<section id="google-colab" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Google Colab</span></h1>
+<p>Google Colab es un entorno de notebooks en la nube que permite ejecutar código Python sin necesidad de instalar nada en tu computadora.</p>
+<section id="consideraciones-antes-de-empezar" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="consideraciones-antes-de-empezar"><span class="header-section-number">1.1</span> Consideraciones antes de empezar:</h2>
 <ul>
-<li><a href="./intro.html">Introducción a PINNs</a></li>
-<li><a href="./colab.html">Colab</a></li>
-<li><a href="./PINN_notebook.html">Hands-on session</a></li>
+<li>Es ideal para aprender y experimentar.</li>
+<li>El tiempo de ejecución es limitado, especialmente en el caso de GPU.</li>
+<li>Puede desconectarse automáticamente si estás inactivo.</li>
+<li>Si utilizas demasiada memoria (RAM), el notebook puede reiniciarse y perderás todo lo que no esté guardado.</li>
+<li>Las sesiones en Google Colab no son permanentes y tampoco se guardan*.</li>
+<li>Si dejas de usar el cuaderno por un tiempo o ejecutas procesos muy largos*, Google puede cerrarlo automáticamente.</li>
 </ul>
+<blockquote class="blockquote">
+<p>Puedes usar una GPU con TensorFlow o PyTorch, pero el acceso no siempre está garantizado. Para comprobar si tu notebook tiene acceso a la GPU, ejecuta el siguiente comando en una celda:</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>nvidia<span class="op">-</span>smi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si una GPU está habilitada, retornara información sobre la tarjeta gráfica</p>
 </section>
-<section id="objetivo" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="objetivo"><span class="header-section-number">1.2</span> Objetivo</h2>
-<p>Aplicar métodos numéricos modernos de aprendizaje automático para resolver problemas físicos modelados mediante ecuaciones diferenciales parciales (EDPs).</p>
-</section>
-<section id="cómo-usar-este-sitio" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="cómo-usar-este-sitio"><span class="header-section-number">1.3</span> Cómo usar este sitio</h2>
-<p>Puedes navegar por las secciones desde la barra superior o usando los enlaces anteriores. Cada notebook está diseñado para ser autoexplicativo y ejecutable.</p>
+<section id="primeros-pasos-en-google-colab" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="primeros-pasos-en-google-colab"><span class="header-section-number">1.2</span> Primeros pasos en Google Colab</h2>
+<p>Puedes comenzar accediendo al enlace: https://colab.google/.</p>
+<p>Al hacerlo, verás una interfaz como la siguiente:</p>
+<div style="text-align: center;">
+<p><img src="colab1.png" width="80%"></p>
+</div>
+<p>Haz clic en “New notebook”:</p>
+<div style="text-align: center;">
+<p><img src="colab2.png" width="80%"></p>
+</div>
+<p>Luego, para revisar las características de la “máquina”, haz clic en el botón “Connect” o en el icono de CPU/RAM:</p>
+<div style="text-align: center;">
+<p><img src="colab3.png" width="30%"></p>
+</div>
+<p>Para cambiar de “máquina”, selecciona “Connect to a hosted runtime”:</p>
+<div style="text-align: center;">
+<p><img src="colab4.png" width="50%"></p>
+</div>
+<p>Aquí podrás especificar el hardware de tu entorno. Por ejemplo, puedes elegir “T4 GPU”. Una vez activado, deberías ver este recurso disponible:</p>
+<div style="text-align: center;">
+<p><img src="colab5.png" width="50%"></p>
+</div>
 
 
 </section>
