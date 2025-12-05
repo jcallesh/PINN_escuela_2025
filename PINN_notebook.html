@@ -290,6 +290,11 @@ Universidad de Valparaíso
 <p><span class="math display">\[y_i = \sin(x_i) + \epsilon_i\]</span></p>
 <p>donde <span class="math inline">\(\epsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span> es ruido Gaussiano/Normal con media cero y varianza <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>Esto nos da un conjunto de datos <span class="math inline">\(\{x_i,\, y_i\}\)</span> que <strong>emula</strong> una señal periódica con perturbaciones aleatorias.</p>
+<blockquote class="blockquote">
+<p>Nota: Estos datos podrían representar, por ejemplo, una <strong>simulación de temperaturas</strong> en Valparaíso durante un día de verano.<br>
+Si ajustamos la función seno para oscilar en torno a una <strong>temperatura media de 18 °C</strong>, el eje <span class="math inline">\(x_i \in [0, 2\pi]\)</span> representaría las horas del día (un ciclo), con un <strong>máximo en <span class="math inline">\(x=\pi/2\)</span><span class="math inline">\(\approx 5\)</span> P.M.</strong>.<br>
+Así, el conjunto de datos emula una señal periódica con ruido y permite <strong>evaluar modelos de predicción de temperatura</strong>, considerando las variaciones diarias aleatorias.</p>
+</blockquote>
 <div id="c943e235" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Completar la siguiente función para que genere un conjunto de datos sintéticos que emule una distribución seno + ruido gaussiano</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generar_datos(num_puntos, desviacion_ruido<span class="op">=</span><span class="fl">0.1</span>):</span>
@@ -466,9 +471,9 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <li><strong>Predicción del modelo:</strong> la función <span class="math inline">\(\hat{y}(x_{\text{new}})\)</span> evaluada en un conjunto de puntos nuevos y más densos, para ver la forma continua que aprendió.</li>
 <li><strong>Solución real (si la conocemos):</strong> <span class="math inline">\(y(x_{\text{new}})\)</span> evaluada en los mismos puntos del paso anterior, para comparar con la salida de la red.</li>
 </ol>
-<div id="6d5cf234" class="cell" data-execution_count="8">
+<div id="6d5cf234" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>) <span class="co"># x_nuevos</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> evaluate(modelo, x_test) <span class="co"># Nuestro modelo evaluado en los nuevos puntos x</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> evaluate(modelo, x_test[:,<span class="va">None</span>]) <span class="co"># Nuestro modelo evaluado en los nuevos puntos x</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> x_test.cpu().numpy()</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> np.sin(x_test) <span class="co"># Funcion verdadera evaluada en los nuevos puntos x_new</span></span>
