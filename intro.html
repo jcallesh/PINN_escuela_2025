@@ -151,12 +151,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción</span></a></li>
-  <li><a href="#the-old" id="toc-the-old" class="nav-link" data-scroll-target="#the-old"><span class="header-section-number">2</span> <span style="color:#1f77b4;">The old</span></a></li>
-  <li><a href="#the-good" id="toc-the-good" class="nav-link" data-scroll-target="#the-good"><span class="header-section-number">3</span> <span style="color:#1f77b4;">The good</span></a>
+  <li><a href="#the-good" id="toc-the-good" class="nav-link" data-scroll-target="#the-good"><span class="header-section-number">2</span> <span style="color:#1f77b4;">The good</span></a>
   <ul class="collapse">
-  <li><a href="#cómo-funcionan-las-pinns" id="toc-cómo-funcionan-las-pinns" class="nav-link" data-scroll-target="#cómo-funcionan-las-pinns"><span class="header-section-number">3.1</span> Cómo Funcionan las PINNs</a></li>
-  <li><a href="#flujo-de-entrenamiento-de-una-pinn" id="toc-flujo-de-entrenamiento-de-una-pinn" class="nav-link" data-scroll-target="#flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">3.2</span> Flujo de Entrenamiento de una PINN</a></li>
+  <li><a href="#cómo-funcionan-las-pinns" id="toc-cómo-funcionan-las-pinns" class="nav-link" data-scroll-target="#cómo-funcionan-las-pinns"><span class="header-section-number">2.1</span> Cómo Funcionan las PINNs</a></li>
+  <li><a href="#flujo-de-entrenamiento-de-una-pinn" id="toc-flujo-de-entrenamiento-de-una-pinn" class="nav-link" data-scroll-target="#flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">2.2</span> Flujo de Entrenamiento de una PINN</a></li>
   </ul></li>
+  <li><a href="#the-old" id="toc-the-old" class="nav-link" data-scroll-target="#the-old"><span class="header-section-number">3</span> <span style="color:#1f77b4;">The old</span></a></li>
   <li><a href="#the-bad" id="toc-the-bad" class="nav-link" data-scroll-target="#the-bad"><span class="header-section-number">4</span> <span style="color:#1f77b4;">The bad</span></a>
   <ul class="collapse">
   <li><a href="#qué-otras-cosas-podemos-hacer" id="toc-qué-otras-cosas-podemos-hacer" class="nav-link" data-scroll-target="#qué-otras-cosas-podemos-hacer"><span class="header-section-number">4.1</span> ¿Qué otras cosas podemos hacer?</a></li>
@@ -195,19 +195,10 @@ Universidad de Valparaíso
 <h1 data-number="1"><span class="header-section-number">1</span> <span style="color:#1f77b4;">Introducción</span></h1>
 <p>Las PINNs fueron introducidas en <a href="https://arxiv.org/abs/1711.10561">Physics Informed Deep Learning</a> como un método que integra datos observacionales y ecuaciones físicas dentro de un mismo modelo. A diferencia de los enfoques numéricos tradicionales, que dependen de discretizaciones específicas para aproximar derivadas, y de los modelos de aprendizaje estándar, que se ajustan únicamente a datos, las PINNs incorporan las ecuaciones que describen el sistema en la función de costo (Loss). Esto permite que la red aprenda soluciones que respetan, de forma aproximada, la estructura diferencial y los datos disponibles del problema. La combinación de información física y datos resulta especialmente útil cuando estos últimos son costosos, irregulares o difíciles de obtener mediante observación o simulación.</p>
 </section>
-<section id="the-old" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <span style="color:#1f77b4;">The old</span></h1>
-<p>La resolución de sistemas físicos descritos por ecuaciones diferenciales parciales no-lineales se ha basado históricamente en métodos numéricos como diferencias finitas, elementos finitos y volúmenes finitos, acoplados a esquemas de integración temporal como Runge-Kutta. Estos enfoques son eficaces, pero dependen rígidamente de la discretización del dominio (mallas). En geometrías complejas o alta dimensionalidad, la generación y refinamiento de estas mallas condiciona la estabilidad de la solución y eleva el costo computacional exponencialmente, limitando su capacidad para capturar dinámicas multiescala.</p>
-<p>El desafío se agudiza en los problemas inversos, en los cuales la estimación de parámetros internos o la recuperación de campos desconocidos requiere invertir operadores diferenciales que suelen ser mal condicionados. En estos casos, los métodos clásicos dependen de técnicas adicionales de regularización para evitar soluciones espurias.</p>
-<p>Las PINNs ofrecen un enfoque alternativo al evitar la necesidad de discretizaciones rígidas. Al trabajar directamente con una representación continua de la solución, permiten evaluar el modelo en cualquier punto del dominio sin depender de una malla fija. En problemas inversos, los parámetros desconocidos pueden incluirse como variables entrenables, lo que permite estimarlos junto con el campo de solución sin modificar la formulación general del método.</p>
-<blockquote class="blockquote">
-<p>Es importante recalcar que las PINNs no reemplazan de manera universal a los métodos clásicos. Su rendimiento depende del tipo de ecuación, la dimensionalidad del problema y la estrategia de entrenamiento. En ciertos casos, los métodos tradicionales siguen siendo más eficientes o más estables, especialmente cuando se dispone de mallas bien construidas y suficientes datos.</p>
-</blockquote>
-</section>
-<section id="the-good" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">The good</span></h1>
-<section id="cómo-funcionan-las-pinns" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="cómo-funcionan-las-pinns"><span class="header-section-number">3.1</span> Cómo Funcionan las PINNs</h2>
+<section id="the-good" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <span style="color:#1f77b4;">The good</span></h1>
+<section id="cómo-funcionan-las-pinns" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="cómo-funcionan-las-pinns"><span class="header-section-number">2.1</span> Cómo Funcionan las PINNs</h2>
 <p>En lugar de discretizar el espacio con una malla, una PINN propone que la solución física sea una función continua aproximada por una red neuronal, <span class="math inline">\(u_{\theta}(\mathbf{x}, t)\)</span>, que aproxima la solución de un sistema físico descrito por una ecuación diferencial. Su funcionamiento es una transformación de coordenadas: la red recibe una posición y un tiempo <span class="math inline">\((\mathbf{x}, t)\)</span> y devuelve directamente el valor de la solución en ese punto. La red no almacena la solución, sino que la parametriza. Esto genera un mapeo continuo y diferenciable en todo el dominio, eliminando la dependencia de una malla fija.</p>
 <div style="text-align: center;">
 <p><img src="pinn.png" alt="Red Neuranal en una PINN" width="60%"></p>
@@ -230,8 +221,8 @@ Universidad de Valparaíso
 <p>siendo los pesos, <span class="math inline">\((\rm{w}_d, \rm{w}_p, \rm{w}_b)\)</span>, hiperparámetros definidos según las características del problema.</p>
 <p>El entrenamiento utiliza algoritmos de gradiente (Adam o L-BFGS) para encontrar los parámetros <span class="math inline">\(\theta\)</span> que minimicen <span class="math inline">\(\mathcal{L}_{total}\)</span>, equilibrando la fidelidad a los datos con la coherencia física del sistema.</p>
 </section>
-<section id="flujo-de-entrenamiento-de-una-pinn" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">3.2</span> Flujo de Entrenamiento de una PINN</h2>
+<section id="flujo-de-entrenamiento-de-una-pinn" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="flujo-de-entrenamiento-de-una-pinn"><span class="header-section-number">2.2</span> Flujo de Entrenamiento de una PINN</h2>
 El proceso de entrenamiento de una PINN puede visualizarse mediante el diagrama (Imagen generada por <a href="https://deepmind.google/models/gemini-image/pro/">Nano Banana Pro</a>)
 <div style="text-align: center;">
 <p><img src="Gemini_Generated_Image_eipi2leipi2leipi.png" alt="PINNs esquema" width="80%"></p>
@@ -245,6 +236,15 @@ El proceso de entrenamiento de una PINN puede visualizarse mediante el diagrama 
 <li><p>Optimizar la red. Entrenar los parámetros mediante métodos como Adam o L-BFGS hasta obtener una solución que satisfaga simultáneamente datos y física.</p></li>
 </ol>
 </section>
+</section>
+<section id="the-old" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:#1f77b4;">The old</span></h1>
+<p>La resolución de sistemas físicos descritos por ecuaciones diferenciales parciales no-lineales se ha basado históricamente en métodos numéricos como diferencias finitas, elementos finitos y volúmenes finitos, acoplados a esquemas de integración temporal como Runge-Kutta. Estos enfoques son eficaces, pero dependen rígidamente de la discretización del dominio (mallas). En geometrías complejas o alta dimensionalidad, la generación y refinamiento de estas mallas condiciona la estabilidad de la solución y eleva el costo computacional exponencialmente, limitando su capacidad para capturar dinámicas multiescala.</p>
+<p>El desafío se agudiza en los problemas inversos, en los cuales la estimación de parámetros internos o la recuperación de campos desconocidos requiere invertir operadores diferenciales que suelen ser mal condicionados. En estos casos, los métodos clásicos dependen de técnicas adicionales de regularización para evitar soluciones espurias.</p>
+<p>Las PINNs ofrecen un enfoque alternativo al evitar la necesidad de discretizaciones rígidas. Al trabajar directamente con una representación continua de la solución, permiten evaluar el modelo en cualquier punto del dominio sin depender de una malla fija. En problemas inversos, los parámetros desconocidos pueden incluirse como variables entrenables, lo que permite estimarlos junto con el campo de solución sin modificar la formulación general del método.</p>
+<blockquote class="blockquote">
+<p>Es importante recalcar que las PINNs no reemplazan de manera universal a los métodos clásicos. Su rendimiento depende del tipo de ecuación, la dimensionalidad del problema y la estrategia de entrenamiento. En ciertos casos, los métodos tradicionales siguen siendo más eficientes o más estables, especialmente cuando se dispone de mallas bien construidas y suficientes datos.</p>
+</blockquote>
 </section>
 <section id="the-bad" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> <span style="color:#1f77b4;">The bad</span></h1>
