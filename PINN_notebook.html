@@ -1095,7 +1095,7 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>modelo         <span class="op">=</span> HelmholtzMLP(box_size)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>function_coste <span class="op">=</span> HelmholtzLoss()</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>function_coste <span class="op">=</span> HelmholtzLoss(w_b<span class="op">=</span><span class="dv">1</span>, n<span class="op">=</span><span class="dv">1</span>, L<span class="op">=</span>box_size)</span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>optimizador    <span class="op">=</span> optim.Adam(modelo.parameters(), lr<span class="op">=</span><span class="fl">1e-3</span>)</span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
