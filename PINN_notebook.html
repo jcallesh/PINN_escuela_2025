@@ -283,8 +283,8 @@ Universidad de Valparaíso
 <p>Vamos a generar <span class="math inline">\(N\)</span> puntos de entrada <span class="math inline">\(x_i\)</span> distribuidos uniformemente en un intervalo (por ejemplo, <span class="math inline">\([0, 2\pi]\)</span>), y para cada uno calcularemos una salida <span class="math inline">\(y_i\)</span> como:</p>
 <p><span class="math display">\[y_i = \sin(x_i) + \epsilon_i\]</span></p>
 <p>donde <span class="math inline">\(\epsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span> es ruido Gaussiano/Normal con media cero y varianza <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Esto nos da un conjunto de datos <span class="math inline">\(\{x_i,\, y_i\}\)</span> que <strong>emula</strong> una señal periódica con perturbaciones aleatorias - un escenario común en física, astronomía, y procesamiento de señales.</p>
-<div id="c943e235" class="cell" data-execution_count="2">
+<p>Esto nos da un conjunto de datos <span class="math inline">\(\{x_i,\, y_i\}\)</span> que <strong>emula</strong> una señal periódica con perturbaciones aleatorias.</p>
+<div id="c943e235" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Completar la siguiente función para que genere un conjunto de datos sintéticos que emule una distribución seno + ruido gaussiano</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generar_datos(num_puntos, desviacion_ruido<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generar valores aleatorios para x</span></span>
@@ -302,7 +302,7 @@ Universidad de Valparaíso
 <div style="border-left: 4px solid #4caf50; padding: 8px;">
 <p>💡 <strong>Nota:</strong> Cuando los datos son “sintéticos” tenemos la ventaja de conocer la distribución exacta que deberían seguir.</p>
 </div>
-<div id="b82f13e4" class="cell" data-execution_count="3">
+<div id="b82f13e4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico simple de los datos vs. la función real</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -325,7 +325,7 @@ Universidad de Valparaíso
 </section>
 <section id="red-neuronal" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="red-neuronal"><span class="header-section-number">1.2</span> 🕸️ Red Neuronal</h2>
-<p>Nuestro objetivo ahora es construir una red neuronal capaz de <strong>aprender</strong> a ajustar los datos sintéticos generados previamente. Para ello, implementaremos un Perceptrón Multicapa (MLP, <em>Multilayer Perceptron</em>), que es la forma más básica —y a la vez más versátil— de red neuronal.</p>
+<p>Nuestro objetivo ahora es construir una red neuronal capaz de <strong>aprender</strong> a ajustar los datos sintéticos generados previamente. Para ello, implementaremos un Perceptrón Multicapa (MLP, <em>Multilayer Perceptron</em>), que es la forma más básica de red neuronal.</p>
 <blockquote class="blockquote">
 <p>Un MLP está formado por varias capas lineales (<em>fully connected layers</em>), donde cada neurona se conecta con todas las de la capa anterior.</p>
 <p>Entre estas capas se insertan funciones de activación que introducen <em>no linealidad</em>, permitiendo que la red aprenda relaciones complejas entre entrada y salida.</p>
@@ -343,7 +343,7 @@ Universidad de Valparaíso
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    nn.functional.tanh</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    nn.function.relu</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    nn.function.softmax</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="8341769a" class="cell" data-execution_count="4">
+<div id="8341769a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MLP(nn.Module):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MLP, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
@@ -358,7 +358,7 @@ Universidad de Valparaíso
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>🧠 ¿Cómo entrenamos nuestro modelo?</p>
-<p>“<em>Aprender</em>” significa ajustar los parámetros internos de la red —denotados por <span class="math inline">\(\theta\)</span>— para que las predicciones <span class="math inline">\(\hat{y}_i\)</span> se acerquen lo más posible a los valores reales <span class="math inline">\(y_i\)</span>. Este proceso se basa en dos componentes esenciales:</p>
+<p>“<em>Aprender</em>” significa ajustar los parámetros internos de la red, denotados por <span class="math inline">\(\theta\)</span>, para que las predicciones <span class="math inline">\(\hat{y}_i\)</span> se acerquen lo más posible a los valores reales <span class="math inline">\(y_i\)</span>. Este proceso se basa en dos componentes esenciales:</p>
 <ol type="1">
 <li><p><strong>Minimización de una función de costo (Loss function):</strong></p>
 <p>Para medir qué tan bien está funcionando el modelo, usamos una función de costo que cuantifica el error entre las predicciones y los datos reales. Una de las más comunes es el Error Cuadrático Medio (MSE):</p>
@@ -366,7 +366,7 @@ Universidad de Valparaíso
 \mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} \left( y_i - \hat{y}_i \right)^2
 \]</span> donde <span class="math inline">\(y_i\)</span> es el valor real y <span class="math inline">\(\hat{y}_i\)</span> es la predicción del modelo para la entrada <span class="math inline">\(x_i\)</span>. &gt; Notenemos que necesitamos 3 argumentos <span class="math inline">\(\{x_i,\hat{y}(x_i),y(x_i)\}\)</span> para evaluar esta función!</p></li>
 <li><p><strong>Actualización por descenso del gradiente:</strong></p>
-<p>Para encontrar los valores óptimos de los parámetros del modelo, <span class="math inline">\(\theta\)</span>, que minimizan la función de costo, <span class="math inline">\(\mathcal{L}\)</span>, se utiliza el método de descenso del gradient (<em>gradient descent</em>). La idea central es mover los parámetros en la dirección opuesta al gradiente de la pérdida —es decir, en la dirección que más reduce el error:</p>
+<p>Para encontrar los valores óptimos de los parámetros del modelo, <span class="math inline">\(\theta\)</span>, que minimizan la función de costo, <span class="math inline">\(\mathcal{L}\)</span>, se utiliza el método de descenso del gradient (<em>gradient descent</em>). La idea central es mover los parámetros en la dirección opuesta al gradiente de la pérdida, es decir, en la dirección que más reduce el error:</p>
 <p><span class="math display">\[
 \theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}
 \]</span></p>
@@ -386,7 +386,7 @@ Universidad de Valparaíso
 <li><strong>Adam</strong>: combina las ideas de <em>momentum</em> y escalamiento adaptativo de tasa de aprendizaje, siendo hoy el más popular por su estabilidad y rapidez de convergencia.</li>
 </ul></li>
 </ol>
-<p>Este ciclo —<em>calcular la pérdida → obtener los gradientes → actualizar parámetros</em>— se repite iterativamente hasta que:</p>
+<p>Este ciclo: <em>calcular la pérdida → obtener los gradientes → actualizar parámetros</em>, se repite iterativamente hasta que:</p>
 <ul>
 <li>la pérdida sea lo suficientemente baja,</li>
 <li>el modelo converja, o</li>
@@ -410,8 +410,8 @@ Universidad de Valparaíso
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(model, x_test):</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test.view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).cpu().numpy()</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test).cpu().numpy()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred.squeeze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="902a5c19" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iniciamos las instancias correspondientes</span></span>
@@ -431,8 +431,8 @@ Universidad de Valparaíso
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>num_epocas <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoca <span class="kw">in</span> <span class="bu">range</span>(num_epocas):</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convertimos los datos a Tensores de pytorch</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    x_i  <span class="op">=</span> torch.tensor(x_train, dtype<span class="op">=</span>torch.float32, requires_grad<span class="op">=</span><span class="va">True</span>).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="co">#inputs</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> torch.tensor(y_train, dtype<span class="op">=</span>torch.float32).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="co">#targets</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    x_i  <span class="op">=</span> torch.tensor(x_train[:,<span class="va">None</span>], dtype<span class="op">=</span>torch.float32)  <span class="co">#inputs shape (Npuntos,1) </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> torch.tensor(y_train[:,<span class="va">None</span>], dtype<span class="op">=</span>torch.float32)     <span class="co">#targets shape (Npuntos,1) </span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Entrenamos</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> train_epoch(x_i, modelo, y, optimizador, criterio)</span>
@@ -522,12 +522,12 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <p>Ahora que ya tenemos nuestro modelo entrenado, podemos hacer algo muy útil: calcular derivadas de la salida de la red con respecto a sus entradas.</p>
 <p>Esto es posible gracias a una herramienta fundamental en PyTorch llamada <code>autograd</code>.</p>
 <p>En otras palabras, podemos evaluar: <span class="math display">\[\left.\dfrac{d}{dx}\hat{y}(x)\right|_{x_i}\]</span> de forma automática, sin necesidad de derivar la red “a mano”.</p>
-<div id="b4323102" class="cell" data-execution_count="11">
+<div id="b4323102" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un conjunto de inputs con gradientes habilitados</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">100</span>).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>).requires_grad_(<span class="va">True</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">100</span>).requires_grad_(<span class="va">True</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener las predicciones del modelo</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>predicciones <span class="op">=</span> modelo(x_test)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>predicciones <span class="op">=</span> modelo(x_test[:,<span class="va">None</span>])</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la derivada de las predicciones respecto a los inputs</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>dy_dx <span class="op">=</span> torch.autograd.grad(</span>
@@ -535,8 +535,7 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    inputs<span class="op">=</span>x_test,</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    grad_outputs<span class="op">=</span>torch.ones_like(predicciones),</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    create_graph<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    retain_graph<span class="op">=</span><span class="va">True</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>)[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>)[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Veamos que tan buena es nuestra derivada</p>
 <div id="7ee36ad7" class="cell" data-execution_count="12">
@@ -569,7 +568,7 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <ul>
 <li>Experimenta con el modelo para explorar cómo responde a distintos escenarios:
 <ol type="1">
-<li>Para una función rapidamente oscilante <span class="math display">\[\sin(\frac{2n\pi x}{L})\]</span> con <span class="math inline">\(L=1\)</span> y diferentes valores de <span class="math inline">\(n=5,20,50\)</span>.</li>
+<li>Para una función rapidamente oscilante <span class="math display">\[\sin\left(\frac{2n\pi x}{L}\right)\]</span> con <span class="math inline">\(L=1\)</span> y diferentes valores de <span class="math inline">\(n=5,20,50\)</span>.</li>
 <li>Qué sucede con el modelo?</li>
 <li>Qué rol juega la capacidad del modelo (número de neuronas, activaciones, número de capas)</li>
 <li>Cómo afecta el tamaño del dataset y la densidad de puntos?</li>
@@ -578,14 +577,12 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 </ul>
 <p><span class="math display">\[ \dfrac{d}{dx} \left(\dfrac{d}{dx}\hat{y}(x)\right)\]</span></p>
 </blockquote>
-<div id="6a442ac0" class="cell" data-execution_count="13">
+<div id="6a442ac0" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>d2y_dx2 <span class="op">=</span> torch.autograd.grad(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    outputs<span class="op">=</span>dy_dx,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    inputs<span class="op">=</span>x_test,</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    grad_outputs<span class="op">=</span>torch.ones_like(dy_dx),</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    create_graph<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    retain_graph<span class="op">=</span><span class="va">True</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="b086dca7" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -620,16 +617,16 @@ Epoch [1000/1000], Loss: 0.0103</code></pre>
 <p><span class="math display">\[-\frac{d^2 V}{dx^2} = \rho(x), \quad x \in [0, L] \;, \]</span> con las siguientes condiciones de borde:</p>
 <p><span class="math display">\[V(0) = V(L) = 0 \, .\]</span></p>
 <p>Elegimos una fuente gaussiana:</p>
-<p><span class="math display">\[\rho(x) = \exp\left[ -\frac{(x - x_0)^2}{2\sigma^2} \right] \]</span></p>
+<p><span class="math display">\[\rho(x) = \exp\left[ -\frac{(x - x_o)^2}{2\sigma^2} \right] \]</span></p>
 <p>con los parámetros:</p>
-<p><span class="math display">\[ L = 1, \quad x_0 = 0.5, \quad \sigma = 0.1 \]</span></p>
-<p>Esto representa una distribución de carga continua, suave y localizada en (<span class="math inline">\(x_0\)</span>).</p>
-<p>La solución <span class="math inline">\(V(x)\)</span> representa el potencial producido por esa carga, el cual debería alcanzar su máximo en (<span class="math inline">\(x_0\)</span>) y anularse en los bordes, <a href="https://dn390.user.srcf.net/files/waffle/IA/Vector_Calculus/poisson.pdf">Más información</a>.</p>
+<p><span class="math display">\[ L = 1, \quad x_o= 0.5, \quad \sigma = 0.1 \]</span></p>
+<p>Esto representa una distribución de carga continua, suave y localizada en (<span class="math inline">\(x_o\)</span>).</p>
+<p>La solución <span class="math inline">\(V(x)\)</span> representa el potencial producido por esa carga, el cual debería alcanzar su máximo en (<span class="math inline">\(x_o\)</span>) y anularse en los bordes, <a href="https://dn390.user.srcf.net/files/waffle/IA/Vector_Calculus/poisson.pdf">Más información</a>.</p>
 <p>Este problema admite una solución analítica utilizando la función de Green asociada al operador Laplaciano unidimensional con densidad de carga <span class="math inline">\(\rho(x)\)</span>: <span class="math display">\[V(x) = \int_0^L G(x, x') \rho(x') dx'\]</span> donde la función de Green $ G(x, x’)$ para condiciones de borde de Dirichlet es: <span class="math display">\[\begin{equation}
 G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)}{L}, &amp; x &gt; x' \end{cases}
 \end{equation}\]</span></p>
 <p>En la práctica, esta integral puede evaluarse fácilmente de forma numérica utilizando NumPy.</p>
-<div id="86f1e083" class="cell" data-execution_count="15">
+<div id="86f1e083" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -643,15 +640,15 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> green_mat(x, xp):</span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># x: posiciones 1D con shape (M,) ; xp: posiciones primas 1D con shape (N,)</span></span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># retorna una matriz (M,N)  G_ij = G(x[i], xp[j])</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.atleast_1d(x)[:, <span class="va">None</span>]   <span class="co"># shape (M,1)</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    xp <span class="op">=</span> np.atleast_1d(xp)[<span class="va">None</span>, :] <span class="co"># shape (1,N)</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x[:, <span class="va">None</span>]   <span class="co"># shape (M,1)</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    xp <span class="op">=</span> xp[<span class="va">None</span>, :] <span class="co"># shape (1,N)</span></span>
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> (x <span class="op">&lt;</span> xp)</span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> np.where(mask, x <span class="op">*</span> (L <span class="op">-</span> xp) <span class="op">/</span> L, xp <span class="op">*</span> (L <span class="op">-</span> x) <span class="op">/</span> L)</span>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> G</span>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Paramemtros iniciales</span></span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>xo <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un grid para evaluar la solución</span></span>
@@ -660,7 +657,7 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>xsp <span class="op">=</span> np.linspace(<span class="fl">0.</span>, L, N)            <span class="co"># puntos de integración x'. shape:(N,)</span></span>
 <span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la solución analítica V(x) = \int_0^L G(x,x') rho(x') dx'</span></span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>rho_vals <span class="op">=</span> rho_np(xsp,x0,sigma)  <span class="co"># # note que estamos evaluando sobre x' para realizar la integral </span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>rho_vals <span class="op">=</span> rho_np(xsp,xo,sigma)  <span class="co"># # note que estamos evaluando sobre x' para realizar la integral </span></span>
 <span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> green_mat(xs, xsp) <span class="co"># shape (N, N)</span></span>
 <span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos usar el metodo del trapecio sobre x'</span></span>
 <span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>V_analytic <span class="op">=</span> G.dot(rho_vals)<span class="op">*</span>(xsp[<span class="dv">1</span>] <span class="op">-</span> xsp[<span class="dv">0</span>])  <span class="co"># shape (N,)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -691,10 +688,9 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <p>🔄 <strong>¿Qué cambia respecto al aprendizaje supervisado?</strong></p>
 <p>En el aprendizaje supervisado tradicional, entrenamos el modelo usando pares de datos conocidos <span class="math inline">\({x_i, y_i}\)</span>, donde los valores <span class="math inline">\(y_i\)</span> sirven como <em>targets</em> o valores objetivo.</p>
 <p>El modelo aprende a aproximar la relación <span class="math inline">\(x_i \mapsto y_i\)</span>.</p>
-<p>En cambio, en una PINN:</p>
+<p>en una PINN pedimos adicionalmente:</p>
 <ul>
-<li>No necesitamos disponer de <em>targets</em> explícitos <span class="math inline">\(y_i\)</span> (reales o sintéticos).</li>
-<li>En lugar de datos observacionales, usamos conocimiento físico expresado en forma de ecuaciones diferenciales (PDEs) que el modelo debe satisfacer.</li>
+<li>Usamos conocimiento físico expresado en forma de ecuaciones diferenciales (PDEs) que el modelo debe satisfacer.</li>
 <li>También es posible usar formulaciones variacionales, donde el entrenamiento se basa en minimizar un funcional de energía.</li>
 </ul>
 </div>
@@ -714,7 +710,7 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <li>Si el término de borde domina, el modelo podría ajustar las condiciones pero no resolver correctamente la PDE en el interior.</li>
 </ul>
 <blockquote class="blockquote">
-<p>Por eso, <span class="math inline">\(\rm{w}_b\)</span> controla el balance entre precisión física y consistencia en los bordes, un detalle crucial para el entrenamiento estable de una PINN.</p>
+<p>Por eso, <span class="math inline">\(\rm{w}_b\)</span> controla el balance entre precisión física y consistencia en los bordes.</p>
 </blockquote>
 <div id="b44970d1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
@@ -725,15 +721,15 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    torch.set_default_device(<span class="st">"cuda"</span>)</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PoissonLoss(nn.Module):</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, L<span class="op">=</span><span class="fl">1.0</span>, w_b<span class="op">=</span><span class="fl">1e3</span>, x0<span class="op">=</span><span class="fl">0.5</span>, sigma<span class="op">=</span><span class="fl">0.1</span>):</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, L<span class="op">=</span><span class="fl">1.0</span>, w_b<span class="op">=</span><span class="fl">1e3</span>, xo<span class="op">=</span><span class="fl">0.5</span>, sigma<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.L <span class="op">=</span> L</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.w_b <span class="op">=</span> w_b</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x0 <span class="op">=</span> x0</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.xo <span class="op">=</span> xo</span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigma <span class="op">=</span> sigma</span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rho(<span class="va">self</span>, x):</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> torch.exp(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>((x <span class="op">-</span> <span class="va">self</span>.x0)<span class="op">/</span><span class="va">self</span>.sigma)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> torch.exp(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>((x <span class="op">-</span> <span class="va">self</span>.xo)<span class="op">/</span><span class="va">self</span>.sigma)<span class="op">**</span><span class="dv">2</span>)</span>
 <span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, model, x_dom, xb0, xbL):</span>
 <span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        x_dom.requires_grad_(<span class="va">True</span>)</span>
@@ -758,7 +754,7 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pde_loss <span class="op">+</span> <span class="va">self</span>.w_b <span class="op">*</span> bc_loss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Reciclamos algunas de las funciones del problema anterior aquí:</p>
-<div id="41f2239e" class="cell" data-execution_count="18">
+<div id="41f2239e" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MLP(nn.Module):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MLP, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
@@ -783,10 +779,10 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(model, x_test):</span>
 <span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
 <span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test.view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).cpu().numpy()</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test).cpu().numpy()</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred.squeeze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="20492b65" class="cell" data-execution_count="23">
+<div id="20492b65" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="op">=</span> MLP()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>criterio <span class="op">=</span> PoissonLoss(L<span class="op">=</span>L)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(modelo.parameters(), lr<span class="op">=</span><span class="fl">1e-3</span>)</span>
@@ -807,8 +803,8 @@ G(x, x') = \begin{cases} \frac{x(L - x')}{L}, &amp; x &lt; x' \\ \frac{x'(L - x)
 <span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># loss.backward()</span></span>
 <span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># optimizer.step()</span></span>
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># #</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoca<span class="op">+</span><span class="dv">1</span>)<span class="op">%</span><span class="dv">1000</span><span class="op">==</span><span class="dv">0</span>:</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoca<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epocas<span class="sc">}</span><span class="ss">, Loss = </span><span class="sc">{</span>loss<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoca<span class="op">+</span><span class="dv">1</span>) <span class="op">%</span> <span class="dv">1000</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoca<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epocas<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1000/10000, Loss = 1.47e-01
 Epoch 2000/10000, Loss = 1.37e-01
@@ -822,8 +818,8 @@ Epoch 9000/10000, Loss = 2.25e-02
 Epoch 10000/10000, Loss = 1.25e-02</code></pre>
 </div>
 </div>
-<div id="4faf8466" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.tensor(xs, dtype<span class="op">=</span>torch.float32).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<div id="4faf8466" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.tensor(xs[:,<span class="va">None</span>], dtype<span class="op">=</span>torch.float32)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>V_pred <span class="op">=</span> evaluate(modelo, x_test)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -921,9 +917,9 @@ x(t) = e^{-\delta t}(2 A \cos(\phi + \omega t)),\quad\mathrm{con}\quad \omega=\s
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, t):</span>
 <span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.net(t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="c9c58207" class="cell" data-execution_count="23">
+<div id="c9c58207" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># domain and initial condition points</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>t_dom <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">200</span>, requires_grad<span class="op">=</span><span class="va">True</span>).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>t_dom <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">200</span>, requires_grad<span class="op">=</span><span class="va">True</span>)[:,<span class="va">None</span>]</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> torch.tensor([[<span class="fl">0.0</span>]], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> MLP()</span>
@@ -951,10 +947,10 @@ Epoch 9000: Loss = 7.06e+01
 Epoch 10000: Loss = 3.03e+01</code></pre>
 </div>
 </div>
-<div id="1c2cb6ad" class="cell" data-execution_count="24">
+<div id="1c2cb6ad" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">eval</span>()</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    t_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">200</span>).view(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    t_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">200</span>)[:,<span class="va">None</span>]</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    x_pred <span class="op">=</span> model(t_test).cpu().numpy().squeeze()</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> x_analitico(t, m<span class="op">=</span><span class="dv">1</span>, mu<span class="op">=</span><span class="dv">4</span>, k<span class="op">=</span><span class="fl">400.</span>):</span>
@@ -1060,7 +1056,7 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 </ul>
 <p>En este caso específico, tomando <span class="math inline">\(f|_{\partial\Omega} = x(L - x)\)</span> garantiza que ( $E_(0) = E_(L) = 0 $), cumpliendo así las condiciones de Dirichlet deseadas.</p>
 <p>Esto nos permite ahorrarnos el termino de borde en la loss!</p>
-<div id="0216847b" class="cell" data-execution_count="26">
+<div id="0216847b" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> HelmholtzMLP(nn.Module):</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, L):</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -1077,7 +1073,7 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> E_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>reciclamos algunas funciones anteriores,</p>
-<div id="7de3a564" class="cell" data-execution_count="27">
+<div id="7de3a564" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_epoch(model, optimizer, criterion, inputs):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
@@ -1089,11 +1085,11 @@ Epoch 10000: Loss = 3.03e+01</code></pre>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(model, x_test):</span>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
 <span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test.view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).cpu().numpy()</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(x_test).cpu().numpy()</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y_pred.squeeze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>y entranamos nuestro modelo</p>
-<div id="828f8def" class="cell" data-execution_count="28">
+<div id="828f8def" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>box_size <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">1000</span></span>
@@ -1120,8 +1116,8 @@ Epoch [9000/10000], Loss: 1.8265e-04
 Epoch [10000/10000], Loss: 2.3351e-03</code></pre>
 </div>
 </div>
-<div id="8e16173a" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, box_size, <span class="dv">200</span>).view(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<div id="8e16173a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> torch.linspace(<span class="dv">0</span>, box_size, <span class="dv">200</span>)[:,<span class="va">None</span>]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>E_pred <span class="op">=</span> evaluate(modelo, x_test)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>E_true <span class="op">=</span> np.sqrt(<span class="dv">2</span>)<span class="op">*</span>np.sin(np.pi<span class="op">*</span>x_test.cpu().numpy() <span class="op">/</span> box_size)</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
