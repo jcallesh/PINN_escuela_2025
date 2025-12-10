@@ -1,0 +1,24 @@
+# <span style="color:#1f77b4;">Introducción</span>
+
+Históricamente, la resolución de PDEs lineales ha contado con herramientas analíticas muy desarrolladas y elegantes. Entre ellas destacan el uso de funciones de Green y la expansión en bases ortogonales, métodos ampliamente utilizados en electrodinámica, mecánica cuántica y física matemática. Para un operador diferencial lineal $\mathcal{L}$ actuando sobre una función $u(x)$ y una fuente $f(x)$, se describe el problema
+    $$\mathcal{L}u=f(x)$$
+
+En el formalismo de funciones de Green, la solución puede expresarse como la acción del inverso del operador lineal, $u = \mathcal{L}^{-1}f$, lo cual se escribe explícitamente como la convolución
+    $$u = \left<G|f\right>  \equiv \int_{a}^{b} dx' G(x,x') f(x')$$
+
+donde $G(x,x')$ es la función de Green asociada al problema elemental
+$$\mathcal{L}G(x,x') = - \delta_D(x-x')$$
+junto con las condiciones de frontera apropiadas.
+
+Esta construcción permite representar la solución general como una superposición lineal de respuestas fundamentales, reflejando la propiedad de superposición propia de los operadores lineales.
+
+De manera equivalente, cuando $\mathcal{L}$ es autoadjunto con autovalores $\lambda_n$ y autofunciones $\phi_n$​, la solución puede expandirse como
+    $$u = \sum_n c_n \phi_n$$
+con coeficientes determinados por
+    $$ c_n \equiv \frac{\left<\phi_n|f\right>}{\lambda_n} $$
+
+Ambos enfoques dependen crucialmente de la linealidad.
+
+En presencia de un operador no lineal, $\mathcal{N}$, la superposición deja de ser válida y no existe, en general, un inverso bien definido. Esto limita el uso de funciones de Green, métodos espectrales y otras técnicas analíticas tradicionales. En este contexto surge el interés por métodos numéricos capaces de manejar no linealidades de forma más flexible.
+
+Dentro de este panorama, las PINNs fueron introducidas en [Physics Informed Deep Learning](https://arxiv.org/abs/1711.10561).....
